@@ -12,6 +12,7 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+hbs.registerPartials(__dirname + "/views/partials");
 
 const app = express();
 
@@ -23,6 +24,8 @@ const capitalized = require("./utils/capitalized");
 const projectName = "cuinem";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+
+const exposeUser = require("./middleware/exposeUserToViews")
 
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");

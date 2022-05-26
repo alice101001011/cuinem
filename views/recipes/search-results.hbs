@@ -1,0 +1,20 @@
+
+<div class="container">
+<h1>Recipes Search results</h1>
+
+<div class="rooms-body">
+
+</form>
+<div class="card-grid">
+  {{#each recipeData.hits}}
+    <div class="card">
+      <img src={{this.recipe.image}} class="card-img-top" alt={{this.recipe.label}} />
+      <div class="card-body">
+        <h5 class="card-title">{{this.recipe.label}}</h5>
+        <a href="/recipes/{{this.recipe.url}}" type="button" class="btn btn-sm btn-outline-dark">View Recipe Details</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+</div>
+</div>

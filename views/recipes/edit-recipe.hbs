@@ -1,0 +1,45 @@
+<h1>Edit recipe</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+<form action="/recipes/{{id}}/edit" method="POST" enctype="multipart/form-data">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input required type="text" class="form-control" id="label" name="label" value="{{label}}"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+      value="{{description}}"
+    />
+  </div>
+
+  {{!-- <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="imagenUrl" name="imagenUrl" value="{{imageUrl}}"/>
+  </div> --}}
+
+  <div class="mb-3">
+    <label for="imageUpload" class="form-label">Image Upload</label>
+    <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+    <input type="text" name="existingImage" hidden value="{{imageUrl}}"/>
+  </div>
+
+
+  <button type="submit" type="button" class="btn btn-sm btn-outline-dark">Save changes</button>
+  
+</form>
+<a href='/profile' class="btn btn-sm btn-outline-dark">
+  Go back
+</a>
+</div>
+    </div>
+</div>
+</div>

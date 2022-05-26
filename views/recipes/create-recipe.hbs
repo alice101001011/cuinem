@@ -1,0 +1,41 @@
+<h1>Create Recipe</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+<form action="/recipes/create" method="POST" enctype="multipart/form-data">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input required type="text" class="form-control" id="label" name="label" />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+    />
+  </div>
+
+  {{!-- <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input type="text" class="form-control" id="imageUrl" name="imageUrl" />
+  </div> --}}
+
+   <div class="mb-3">
+    <label for="imageUpload" class="form-label">Image Upload</label>
+    <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+  </div>
+
+
+  <button type="submit" class="btn btn-sm btn-outline-dark">Create new recipe</button>
+  
+</form>
+<a href="/recipes" class="btn btn-sm btn-outline-dark">Go back</a>
+</div>
+
+    </div>
+</div>
+</div>
