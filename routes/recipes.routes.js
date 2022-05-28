@@ -15,26 +15,63 @@ router.get("/", async (req, res, next) => {
     const appKey = process.env.APP_KEY;
 
     // this is just a test search query for recipes with broccoli (;
-    const query = req.query.q;
-    const recipe_id = req.path;
-    console.log(req.params);
+    //const query = req.query.q;
+    const query = "summer" 
+    //const recipe_id = req.path;
+    //console.log(req.params);
 
     // this is the request url as  in the documentation of the api, ijust inserted the variables for query, app id + app key
     const recipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${appId}&app_key=${appKey}`;
 
     // heere we obviously wait for the response
     const recipeResponse = await fetch(recipeUrl);
+    let recipeData = await recipeResponse.json();
+    //let hitsArray = recipeData.hits
 
-    // here we
-    const recipeData = await recipeResponse.json();
+    //console.log(hitsArray)
 
-    //res.json(recipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
-    res.render("recipes/recipes-list", { recipeData});
+    //console.log(recipeData)
+//const singleRecipeUrl = "http://www.edamam.com/ontologies/edamam.owl#recipe_0e39757c1d9b13d74bf1b87bbc7470fd" //51
+
+
+    
+// function returnRecipeId(hitsArray) {
+//     for (let i = 0; i < hitsArray.length; i++) {
+//       return uriRecipeId = hitsArray[i].recipe.uri.split("_")[1]
+//     }}
+
+
+// const recipeUriId = hitsArray[i].recipe.uri.split("_")[1]
+
+//     let updatedRecipeData = hitsArray.map(recipe => {
+      
+//       return {...recipe, recipeId: recipeUriId}
+      
+//         //recipeId: returnRecipeId(recipeData)
+//       })
+      
+//       console.log("new try", updatedRecipeData)
+
+// let updatedRecipeData = {
+//   ...recipeData,
+//   recipeId: returnRecipeId(recipeData)
+// }
+
+//console.log("updated data", updatedRecipeData)
+
+    // console.log(uriRecipe)
+   
+
+    //uriRecipeId = recipeData.hits[i].recipe.uri.split("_")[1]
+    
+    //console.log(uriRecipeId)
+
+    //res.json(updatedRecipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
+    res.render("recipes/recipes-list", {recipeData});
   } catch (err) {
     next(err);
   }
 });
-
 
 // Display search results
 
@@ -52,8 +89,6 @@ router.get("/search", async (req, res, next) => {
 
     // heere we obviously wait for the response
     const recipeResponse = await fetch(recipeUrl);
-
-    // here we
     const recipeData = await recipeResponse.json();
 
     //res.json(recipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
@@ -190,17 +225,18 @@ router.get("/:id", async (req, res, next) => {
     console.log(req.params);
     console.log(req.body);
 
-    // this is just a test search query for recipes with broccoli (;
+    // this is just a test
     //const recipeId = "b79327d05b8e5b838ad6cfd9576b30b6";
 
     // this is the request url as  in the documentation of the api, ijust inserted the variables for query, app id + app key
     const recipeUrl = `https://api.edamam.com/api/recipes/v2${recipe_id}?type=public&app_id=${appId}&app_key=${appKey}`;
 
-    // heere we obviously wait for the response
+    // heere we obviously wait for the response + json
     const recipeResponse = await fetch(recipeUrl);
-
-    // here we
     const recipeData = await recipeResponse.json();
+    const uriRecipeId = recipeData.recipe.uri.split("_")[1]
+console.log(uriRecipeId)
+
     console.log(recipeData);
     //res.json(recipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
     res.render("recipes/recipe-details", { recipeData });

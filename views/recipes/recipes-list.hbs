@@ -21,13 +21,22 @@
           <div class="card-body">
             <h5 class="card-title">{{this.recipe.label}}</h5>
             <a
-              href="/recipes/{{this.recipe.recipe_id}}"
+              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
+              href="{{this.recipe.url}}"
               type="button"
               class="btn btn-sm btn-outline-dark"
             >View Recipe Details</a>
+            <p hidden>{{this.recipe.url}}</p>
           </div>
         </div>
       {{/each}}
     </div>
+    <a
+              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
+              href="{{recipeData._links.next.href}}"
+              type="button"
+              class="btn btn-sm btn-outline-dark"
+            >Next page</a>
+            {{!-- <p hidden>{{this.recipe.url}}</p> --}}
   </div>
 </div>

@@ -61,7 +61,7 @@ module.exports = (app) => {
       },
       store: MongoStore.create({
         mongoUrl:
-          MONGO_URI || "mongodb://localhost/lab-express-rooms-with-reviews",
+          MONGO_URI || "mongodb://localhost/cuinem",
         ttl: 60 * 60 * 24 * 7,
       }),
     })
