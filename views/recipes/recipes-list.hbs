@@ -11,7 +11,7 @@
       <button type="submit">SEARCH</button>
     </form>
     <div class="card-grid">
-      {{#each recipeData.hits}}
+      {{#each updatedRecipeData}}
         <div class="card">
           <img
             src={{this.recipe.image}}
@@ -22,11 +22,21 @@
             <h5 class="card-title">{{this.recipe.label}}</h5>
             <a
               {{!-- href="/recipes/{{this.recipe.uri}}" --}}
-              href="{{this.recipe.url}}"
+              href="/recipes/{{this.recipe._links.self.href}}"
               type="button"
               class="btn btn-sm btn-outline-dark"
-            >View Recipe Details</a>
-            <p hidden>{{this.recipe.url}}</p>
+            >View Recipe Details original site</a>
+            <a
+              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
+              href="{{this.recipeId}}"
+              type="button"
+              class="btn btn-sm btn-outline-dark recipe-id"
+
+            >View Recipe Details Recipe ID</a>
+            <button type="submit" id="recipeId" href="{{this.recipeId}}"></button>
+                        
+
+            <p hidden>{{this.recipe.uri}}</p>
           </div>
         </div>
       {{/each}}

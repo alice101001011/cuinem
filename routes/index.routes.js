@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const exposeUser = require("../middleware/exposeUserToViews");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -7,7 +8,7 @@ router.get("/", (req, res, next) => {
 
 router.use("/auth", require("./auth.routes"));
 
-router.use("/recipes", require("./recipes.routes"));
+router.use("/recipes", exposeUser, require("./recipes.routes"));
 
 router.use("/reviews", require("./reviews.routes"));
 

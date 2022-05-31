@@ -6,6 +6,8 @@ const Review = require("../models/Review.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const fileUploader = require("../config/cloudinary.config");
 const fetch = require("node-fetch");
+const { v4: uuidv4 } = require("uuid");
+
 
 // Display list of all recipes, no need to be logged in to view
 
@@ -16,7 +18,7 @@ router.get("/", async (req, res, next) => {
 
     // this is just a test search query for recipes with broccoli (;
     //const query = req.query.q;
-    const query = "summer" 
+    const query = "summer";
     //const recipe_id = req.path;
     //console.log(req.params);
 
@@ -26,48 +28,40 @@ router.get("/", async (req, res, next) => {
     // heere we obviously wait for the response
     const recipeResponse = await fetch(recipeUrl);
     let recipeData = await recipeResponse.json();
-    //let hitsArray = recipeData.hits
+    let hitsArray = recipeData.hits;
 
     //console.log(hitsArray)
-
     //console.log(recipeData)
-//const singleRecipeUrl = "http://www.edamam.com/ontologies/edamam.owl#recipe_0e39757c1d9b13d74bf1b87bbc7470fd" //51
+    //const singleRecipeUrl = "http://www.edamam.com/ontologies/edamam.owl#recipe_0e39757c1d9b13d74bf1b87bbc7470fd" //51
 
+    // function returnRecipeId(hitsArray) {
+    //     for (let i = 0; i < hitsArray.length; i++) {
+    //       return uriRecipeId = hitsArray[i].recipe.uri.split("_")[1]
+    //     }}
+    // const recipeUriId = hitsArray[i].recipe.uri.split("_")[1]
 
-    
-// function returnRecipeId(hitsArray) {
-//     for (let i = 0; i < hitsArray.length; i++) {
-//       return uriRecipeId = hitsArray[i].recipe.uri.split("_")[1]
-//     }}
+    let updatedRecipeData = hitsArray.map((recipe) => {
+      return { ...recipe, recipeId: uuidv4() };
+    });
 
+    console.log("new try", updatedRecipeData);
 
-// const recipeUriId = hitsArray[i].recipe.uri.split("_")[1]
+    // var singleRecipeBtns = document.querySelectorAll (".recipe-id");
+    // for (var i=0; i<singleRecipeBtns.length; i++) {
+    //   singleRecipeBtns[i].addEventListener ('click', function (displaySingleRecipe) {
+    //     console.log ("this " +  this);
+    //     console.log ("event " +  displaySingleRecipe);
+    //     message (this);
+    //   });
+    // }
 
-//     let updatedRecipeData = hitsArray.map(recipe => {
-      
-//       return {...recipe, recipeId: recipeUriId}
-      
-//         //recipeId: returnRecipeId(recipeData)
-//       })
-      
-//       console.log("new try", updatedRecipeData)
-
-// let updatedRecipeData = {
-//   ...recipeData,
-//   recipeId: returnRecipeId(recipeData)
-// }
-
-//console.log("updated data", updatedRecipeData)
-
+    //console.log("updated data", updatedRecipeData)
     // console.log(uriRecipe)
-   
-
-    //uriRecipeId = recipeData.hits[i].recipe.uri.split("_")[1]
-    
     //console.log(uriRecipeId)
 
     //res.json(updatedRecipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
-    res.render("recipes/recipes-list", {recipeData});
+    //res.render("recipes/recipes-list", { hitsArray });
+    res.render("recipes/recipes-list", { updatedRecipeData });
   } catch (err) {
     next(err);
   }
@@ -226,7 +220,7 @@ router.get("/:id", async (req, res, next) => {
     console.log(req.body);
 
     // this is just a test
-    //const recipeId = "b79327d05b8e5b838ad6cfd9576b30b6";
+    const recipeId = "b79327d05b8e5b838ad6cfd9576b30b6";
 
     // this is the request url as  in the documentation of the api, ijust inserted the variables for query, app id + app key
     const recipeUrl = `https://api.edamam.com/api/recipes/v2${recipe_id}?type=public&app_id=${appId}&app_key=${appKey}`;
@@ -234,8 +228,8 @@ router.get("/:id", async (req, res, next) => {
     // heere we obviously wait for the response + json
     const recipeResponse = await fetch(recipeUrl);
     const recipeData = await recipeResponse.json();
-    const uriRecipeId = recipeData.recipe.uri.split("_")[1]
-console.log(uriRecipeId)
+    const uriRecipeId = recipeData.recipe.uri.split("_")[1];
+    console.log(uriRecipeId);
 
     console.log(recipeData);
     //res.json(recipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser

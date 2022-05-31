@@ -58,9 +58,6 @@ const recipeSchema = new Schema({
         url: String,
         shareAs: String,
         yield: 0,
-        dietLabels: [String],
-        healthLabels: [String],
-        cautions: [String],
         ingredientLines: [String],
         ingredients: [
           {
@@ -73,27 +70,10 @@ const recipeSchema = new Schema({
           },
         ],
         calories: 0,
-        glycemicIndex: 0,
-        totalCO2Emissions: 0,
-        co2EmissionsClass: String,
         totalWeight: 0,
         cuisineType: [String],
         mealType: [String],
         dishType: [String],
-        totalNutrients: {},
-        totalDaily: {},
-        digest: [
-          {
-            label: String,
-            tag: String,
-            schemaOrgTag: String,
-            total: 0,
-            hasRDI: Boolean,
-            daily: 0,
-            unit: String,
-            sub: {},
-          },
-        ],
       },
       _links: {
         self: {
