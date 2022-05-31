@@ -16,8 +16,12 @@ router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
+
+
+
+
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { email, password, fullName } = req.body;
+  const { username, email, password } = req.body;
 
   if (!email) {
     return res.status(400).render("auth/signup", {
@@ -41,6 +45,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
         .render("auth/signup", { errorMessage: "Email already taken." });
     }
 
+    User.findOne({ username }).then((found) => {
+      if (found) {
+        return res
+          .status(400)
+          .render("auth/signup", { errorMessage: "Username already in use." });
+      }
+      
     return bcrypt
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
@@ -48,7 +59,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return User.create({
           email,
           password: hashedPassword,
-          fullName,
+          username,
         });
       })
       .then((user) => {
@@ -71,6 +82,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           .status(500)
           .render("auth/signup", { errorMessage: error.message });
       });
+    });
   });
 });
 
@@ -81,11 +93,11 @@ router.get("/login", isLoggedOut, (req, res) => {
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email) {
+  if (!username) {
     return res.status(400).render("auth/login", {
-      errorMessage: "Please provide your email.",
+      errorMessage: "Please provide your username.",
     });
   }
 
@@ -98,7 +110,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
   }
 
-  User.findOne({ email })
+  User.findOne({ username })
     .then((user) => {
       if (!user) {
         return res.status(400).render("auth/login", {

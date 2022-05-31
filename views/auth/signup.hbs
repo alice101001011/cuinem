@@ -7,6 +7,18 @@
   <form action="/auth/signup" method="post">
 
     <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        required
+        type="username"
+        class="form-control"
+        id="username"
+        name="username"
+        placeholder="Please type your user name"
+      />
+    </div>
+
+    <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input
         required
@@ -17,6 +29,7 @@
         placeholder="Please type your email"
       />
     </div>
+
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input
@@ -28,17 +41,7 @@
         placeholder="Please type a password"
       />
     </div>
-    <div class="mb-3">
-      <label for="fullName" class="form-label">Full name</label>
-      <input
-        required
-        type="fullName"
-        class="form-control"
-        id="fullName"
-        name="fullName"
-        placeholder="Please type your full name"
-      />
-    </div>
+
     <button type="submit" class="btn btn-sm btn-outline-dark">Sign up</button>
 
     <a href="/" class="btn btn-sm btn-outline-dark">Go back</a>
