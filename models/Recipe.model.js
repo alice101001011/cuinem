@@ -13,24 +13,26 @@ const { Schema, model } = require("mongoose");
 // });
 
 const recipeSchema = new Schema({
-  from: 0,
-  to: 0,
-  count: 0,
-  _links: {
-    self: {
-      href: String,
-      title: String,
-    },
-    next: {
-      href: String,
-      title: String,
-    },
-  },
-  hits: [
-    {
-      recipe: {
+  // from: 0,
+  // to: 0,
+  // count: 0,
+  // _links: {
+  //   self: {
+  //     href: String,
+  //     title: String,
+  //   },
+  //   next: {
+  //     href: String,
+  //     title: String,
+  //   },
+  // },
+  // hits: [
+  //   {
+  //     recipe: {
+    
         uri: String,
         label: String,
+        description: {type: String, max: 500},
         image: String,
         images: {
           THUMBNAIL: {
@@ -56,8 +58,8 @@ const recipeSchema = new Schema({
         },
         source: String,
         url: String,
-        shareAs: String,
-        yield: 0,
+        // shareAs: String,
+        // yield: 0,
         ingredientLines: [String],
         ingredients: [
           {
@@ -69,24 +71,26 @@ const recipeSchema = new Schema({
             foodId: String,
           },
         ],
-        calories: 0,
-        totalWeight: 0,
+        // calories: 0,
+        // totalWeight: 0,
         cuisineType: [String],
         mealType: [String],
         dishType: [String],
-      },
-      _links: {
-        self: {
-          href: String,
-          title: String,
-        },
-        next: {
-          href: String,
-          title: String,
-        },
-      },
-    },
-  ],
+        owner: { type: Schema.Types.ObjectId, ref: "User" },
+  reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }]
+      // },
+      // _links: {
+      //   self: {
+      //     href: String,
+      //     title: String,
+      //   },
+      //   next: {
+      //     href: String,
+      //     title: String,
+      //   },
+      // },
+  //   },
+  // ],
 });
 
 const Recipe = model("Recipe", recipeSchema);

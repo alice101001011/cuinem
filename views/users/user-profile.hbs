@@ -16,17 +16,17 @@
 
   {{#each recipes}}
     <div class="card">
-      <img src={{this.imageUrl}} class="card-img-top" alt={{this.name}} />
+      <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
       <div class="card-body">
-        <h5 class="card-title">{{this.name}}</h5>
+        <h5 class="card-title">{{this.label}}</h5>
         <p class="card-text"> {{this.description}}</p>
       </div>
       <div class="card-links">
           <div>
-        <a href="/rooms/{{this._id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit recipe</a>
+        <a href="/recipes/{{this.id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit recipe</a>
         </div>
         <div>
-        <form action="/rooms/{{this._id}}/delete" method="POST">
+        <form action="/recipes/{{this.id}}/delete" method="POST">
           <button class="btn btn-sm btn-outline-dark">Delete recipe</button>
         </form>
         </div>
