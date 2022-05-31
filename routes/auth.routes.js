@@ -95,7 +95,7 @@ router.get("/login", isLoggedOut, (req, res) => {
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { username, password } = req.body;
 
-  if (!email) {
+  if (!username) {
     return res.status(400).render("auth/login", {
       errorMessage: "Please provide your username.",
     });
