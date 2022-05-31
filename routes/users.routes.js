@@ -6,7 +6,7 @@ const Review = require("../models/Review.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
-// Display user profile with their rooms and the ability to create new rooms
+// Display user profile
 
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
