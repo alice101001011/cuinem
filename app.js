@@ -16,12 +16,16 @@ hbs.registerPartials(__dirname + "/views/partials");
 
 const app = express();
 
+const axios = require("axios")
+
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
 // default value for title local
 const capitalized = require("./utils/capitalized");
 const projectName = "cuinem";
+
+
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 

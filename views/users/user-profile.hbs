@@ -1,4 +1,5 @@
 <div class="container">
+
   <h1>Welcome back, {{username}}! This is your user profile</h2>
   <div>
       <h2>Create a new recipe</h2>
@@ -14,19 +15,19 @@
   <div class="recipe-body">
     <div class="card-grid">
 
-        {{#each recipe}}
+        {{#each recipes}}
           <div class="card">
-            <img src={{this.imageUrl}} class="card-img-top" alt={{this.name}} />
+            <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
             <div class="card-body">
-              <h5 class="card-title">{{this.name}}</h5>
+              <h5 class="card-title">{{this.label}}</h5>
               <p class="card-text"> {{this.description}}</p>
             </div>
             <div class="card-links">
               <div>
-               <a href="/recipe/{{this._id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
+               <a href="/recipe/{{this.id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
               </div>
               <div>
-                <form action="/recipe/{{this._id}}/delete" method="POST">
+                <form action="/recipe/{{this.id}}/delete" method="POST">
                   <button class="btn btn-sm btn-outline-dark">Delete recipe</button>
                 </form>
               </div>

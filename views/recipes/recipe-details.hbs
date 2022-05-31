@@ -14,7 +14,12 @@
   {{/each}}
   </ul>
 <img src="{{recipeData.recipe.image}}" alt="" />
-<p>Source: {{recipeData.recipe.url}}</p>
+<p>Source: </p>
+<a
+              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
+              href="{{recipeData.recipe.url}}"
+
+            >View full recipe on original site</a>
 <hr>
 
 <h3>Reviews: </h3>
@@ -48,7 +53,7 @@
 {{/if}}
 
 
-<a href="/rooms" class="btn btn-sm btn-outline-dark">Go back</a>
+<a href="/recipes" class="btn btn-sm btn-outline-dark">Go back to recipes list</a>
 
 </div>
 
