@@ -16,7 +16,9 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    /* profilePic: string, */
+    pictureUrl: {
+      type: String,
+    }
   },
   {
     timestamps: true,

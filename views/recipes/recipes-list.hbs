@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Recipes List</h1>
 
-  <div class="rooms-body">
+  <div class="recipe-body">
     <form action="/recipes/search" method="GET">
       <label>
         Search
@@ -60,8 +60,8 @@
             <a
               href="/recipes/{{this.id}}"
               type="button"
-              class="btn btn-sm btn-outline-dark recipe-id"
-            >View Recipe Details Recipe ID</a>
+              class="btn btn-sm btn-outline-dark recipe-id">
+            View Recipe Details </a>
 
           </div>
         </div>
@@ -81,9 +81,10 @@
 
             <a
               href="/recipes/{{this.recipeId}}"
+              target="_blank"
               type="button"
               class="btn btn-sm btn-outline-dark recipe-id"
-            >View Recipe Details Recipe ID</a>
+            >View Recipe Details</a>
 
             {{!-- view recipe url on another tab --}}
             <a
