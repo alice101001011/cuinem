@@ -1,12 +1,29 @@
 <div class="container">
 
-  <h1>Welcome back, {{this.username}}! This is your user profile</h2>
+  <h1>User profile</h2>
   <div>
       <h2>Create a new recipe</h2>
-      <p>Click the button and create a new recipe</p>
   <a href="/recipes/create" type="button" class="btn btn-sm btn-outline-dark">Create new recipe</a>
 
-</div>
+  </div>
+
+<hr>
+
+<div class="profile-container">
+
+  <h2>Edit profile</h2>
+
+  <img src="" alt="{{this.username}} image">
+
+  <div class="prof-btn-container">
+    <a href="/profile/uname-update" type="button" class="btn btn-sm btn-outline-dark">Edit your user name</a>
+
+    <a href="/profile/pwd-update" type="button" class="btn btn-sm btn-outline-dark">Edit your password</a>
+
+    <a href="/profile/pic-update" type="button" class="btn btn-sm btn-outline-dark">Edit your profile picture</a>
+
+  </div> {{!-- class="prof-btn-container" --}}
+</div> {{!-- class"profile-container" --}}
 
 <hr>
 
@@ -38,3 +55,6 @@
     </div>
   </div>
 </div>
+
+{{!-- axios required script --}}
+<script src="/js/login-signup-pops.js"></script>

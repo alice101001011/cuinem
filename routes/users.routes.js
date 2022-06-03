@@ -18,4 +18,29 @@ router.get("/", isLoggedIn, async (req, res, next) => {
   }
 });
 
+
+//edit profile
+
+router.get("/profile-edit", isLoggedIn, async (req, res) => {
+  try {
+    const currentUserId = req.session.user._id;
+    const profile = await User.find({ owner: currentUserId });
+    res.render("/users/edit-profile", {profile});    
+  } catch (err) {
+    next(err);
+  }
+})
+
+router.post("/edit-profile", async(req, res, next) => {
+  try {
+    const { username, email } = req.body;
+    await User.findByIdAndUpdate({
+      username, email,
+      owner: req.session.user._id,
+    });
+  } catch (err) {
+    next(err);
+  }
+})
+
 module.exports = router;
