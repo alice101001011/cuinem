@@ -43,4 +43,36 @@ router.post("/edit-profile", async(req, res, next) => {
   }
 })
 
+
+router.post("/edit/username-update", async(req, res, next) => {
+  try {
+    const { username } = req.body;
+    await User.findByIdAndUpdate(req.session.user._id, { username });
+    res.redirect("/profile")
+  } catch (err) {
+    next(err);
+  }
+})
+
+router.post("/edit/pwd-update", async(req, res, next) => {
+  try {
+    const { username } = req.body;
+    await User.findByIdAndUpdate(req.session.user._id, { password });
+    res.redirect("/profile")
+  } catch (err) {
+    next(err);
+  }
+})
+
+router.post("/edit/pic-update", async(req, res, next) => {
+  try {
+    const { username } = req.body;
+    await User.findByIdAndUpdate(req.session.user._id, { username });
+    res.redirect("/profile")
+  } catch (err) {
+    next(err);
+  }
+})
+
+
 module.exports = router;
