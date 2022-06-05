@@ -1,62 +1,60 @@
-<h1> {{recipeData.recipe.label}}</h1>
+{{!-- {{#if recipeData}} --}}
+<h1> {{recipe.recipe.label}}</h1>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-9">
-<h3>Cuisine type:</h3> <p>{{recipeData.recipe.cuisineType}}</p>
-<h3>Meal type:</h3> <p>{{recipeData.recipe.mealType}}</p>
-<h3>Dish type:</h3> <p>{{recipeData.recipe.dishType}}</p>
-<h3>Description: </h3><p>{{description}}</p>
-<h3>Ingredients: </h3>
-<ul>
-  {{#each recipeData.recipe.ingredients}}
-  <li>{{this.text}}</li>
-  {{/each}}
-  </ul>
-<img src="{{recipeData.recipe.image}}" alt="" />
-<p>Source: </p>
-<a
-              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
-              href="{{recipeData.recipe.url}}"
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <h3>Cuisine type:</h3>
+      <p>{{recipe.recipe.cuisineType}}</p>
+      <h3>Meal type:</h3>
+      <p>{{recipe.recipe.mealType}}</p>
+      <h3>Dish type:</h3>
+      <p>{{recipe.recipe.dishType}}</p>
+      <h3>Description: </h3>
+      <p>{{recipe.recipe.description}}</p>
+      <h3>Ingredients: </h3>
+      <ul>
+        {{#each recipe.recipe.ingredients}}
+        <li>{{this.text}}</li>
+        {{/each}}
+      </ul>
+      <img src="{{recipe.recipe.image}}" alt="" />
+      <p>Source: <a href="{{recipe.recipe.url}}" target="_blank">View full recipe on original site</a></p>
+      
+      {{!-- <form action="/recipes/{{recipe.recipeId}}/save-favorite" method="POST">
+        <button class="btn btn-sm btn-outline-dark">Save recipe to favorites</button>
+      </form> --}}
+      <hr>
 
-            >View full recipe on original site</a>
-<hr>
+{{!-- 
+      <h3>Reviews: </h3>
 
-<h3>Reviews: </h3>
+      <ul class="list-group list-group-flush">
+        {{#each reviews}}
+        <li class="list-group-item">
+          <p>{{this.comment}}</p>
+          <p>{{this.user.username}}</p>
 
-<ul class="list-group list-group-flush">
-  {{#each reviews}}
-    <li class="list-group-item">
-      <p>{{this.comment}}</p>
-      <p>{{this.user.fullName}}</p>
+          {{#if isLoggedIn}}
+          <a href="/reviews/{{this.recipeId}}/edit-review" type="button" class="btn btn-sm btn-outline-dark">Edit
+            review</a>
+          <form action="/reviews/{{this.recipeId}}/delete-review" method="POST">
+            <button class="btn btn-sm btn-outline-dark">Delete review</button>
+          </form>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
 
       {{#if isLoggedIn}}
-      <a
-        href="/reviews/{{this._id}}/edit-review"
-        type="button"
-        class="btn btn-sm btn-outline-dark"
-      >Edit review</a>
-      <form action="/reviews/{{this._id}}/delete-review" method="POST">
-        <button class="btn btn-sm btn-outline-dark">Delete review</button>
-      </form>
-    </li>
-    {{/if}}
-  {{/each}}
-</ul>
-
-{{#if isLoggedIn}}
-<a
-  href="/reviews/{{_id}}/review"
-  type="button"
-  class="btn btn-sm btn-outline-dark"
->Create review</a>
-{{/if}}
+      <a href="/reviews/{{this.recipeId}}/create-review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
+      {{/if}} --}}
 
 
-<a href="/recipes" class="btn btn-sm btn-outline-dark">Go back to recipes list</a>
-
-</div>
+      <a href="/recipes" class="btn btn-sm btn-outline-dark">Go back to recipes list</a>
 
     </div>
+
+  </div>
 </div>
 </div>

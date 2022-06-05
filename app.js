@@ -27,7 +27,7 @@ const projectName = "cuinem";
 
 
 
-app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalized(projectName)}`;
 
 const exposeUser = require("./middleware/exposeUserToViews")
 
