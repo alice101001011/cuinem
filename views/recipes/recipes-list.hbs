@@ -65,6 +65,16 @@
           <a href="/recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View Recipe
             Details Recipe ID</a>
 
+
+            {{!-- view recipe url on another tab --}}
+            <a
+              href="{{this.recipe.url}}"
+              target="_blank"
+              type="button"
+              class="btn btn-sm btn-outline-dark recipe-id"
+            >View recipe site</a>
+            {{!-- view recipe url on another tab --}}
+
         </div>
       </div>
       {{/each}}
