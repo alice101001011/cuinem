@@ -12,7 +12,8 @@ router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const currentUserId = req.session.user._id;
     const recipes = await Recipe.find({ owner: currentUserId });
-    res.render("users/user-profile", { recipes });
+    const { username, picture, email } = userData;
+    res.render("users/user-profile", { currentUserId, recipes, userData });
   } catch (err) {
     next(err);
   }
