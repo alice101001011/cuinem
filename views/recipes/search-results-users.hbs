@@ -6,18 +6,19 @@
 
 </form>
 <div class="card-grid">
-  {{#each newRecipeData.hits}}
+  {{#each recipes}}
     <div class="card">
-      <img src={{this.recipe.image}} class="card-img-top" alt={{this.recipe.label}} />
+      {{#if this.recipe.imageUrl}}
+      <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
+      {{/if}}
       <div class="card-body">
         <h5 class="card-title">{{this.recipe.label}}</h5>
         <a
               {{!-- href="/recipes/{{this.recipe.uri}}" --}}
-              href="{{this.recipeId}}"
+              href="{{this._id}}"
               type="button"
               class="btn btn-sm btn-outline-dark"
             >View Recipe Details</a>
-            <p hidden>{{this.recipe.uri}}</p>
       </div>
     </div>
   {{/each}}

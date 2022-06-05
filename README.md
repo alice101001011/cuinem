@@ -18,7 +18,14 @@ Bonus:
 ```
 HOME
 │
-└───RECIPES
+└───RECIPES FROM WEB
+│   │   displays recipes from all over the web – filter by country etc - search
+│   │
+│   └───SINGLE RECIPE
+│          displays single recipe
+│          (when logged in: user can create review or favorite recipe)
+│ 
+└───USER RECIPES
 │   │   displays recipes – filter by country etc - search
 │   │
 │   └───SINGLE RECIPE
@@ -26,19 +33,25 @@ HOME
 │          when logged in: user can create review or favorite recipe
 │
 └───SIGNUP
-│      displays signup form
+│      displays signup form (only to logged out)
 │
 └───LOGIN
-│      displays login form
+│      displays login form (only to logged out)
 │
 └───PROFILE
-    │   shows own recipes with ability to edit + delete, create new ones, shows reviews given
+    │   shows own recipes with links to edit + delete, create new ones, shows reviews given
     │
     └───FAVORITE RECIPES
     │      displays favorited recipes
     │
     └───CALENDAR
-           displays calendar/meal plan (add recipes to days)
+    │      displays calendar/meal plan (add recipes to days)
+    │   
+    └───CREATE RECIPE
+    │      displays form to create new recipe
+    │   
+    └───OWN RECIPES
+           displays user's recipes
 
 ```
 

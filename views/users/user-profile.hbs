@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1>Welcome back, {{username}}! This is your user profile</h2>
+  <h1>Welcome back, {{user.username}}! This is your user profile</h2>
   <div>
       <h2>Create a new recipe</h2>
       <p>Click the button and create a new recipe</p>
@@ -17,18 +17,84 @@
 
         {{#each recipes}}
           <div class="card">
-            <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
+            <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.label}} />
             <div class="card-body">
-              <h5 class="card-title">{{this.label}}</h5>
-              <p class="card-text"> {{this.description}}</p>
+              <h5 class="card-title">{{this.recipe.label}}</h5>
+              <p class="card-text"> {{this.recipe.description}}</p>
             </div>
             <div class="card-links">
               <div>
-               <a href="/recipe/{{this.id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
+               <a href="/recipes/user-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark">View recipe</a>
               </div>
               <div>
-                <form action="/recipe/{{this.id}}/delete" method="POST">
+               <a href="/recipes/user-recipes/{{this._id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit recipe</a>
+              </div>
+              <div>
+                <form action="/recipes/user-recipes/{{this._id}}/delete" method="POST">
                   <button class="btn btn-sm btn-outline-dark">Delete recipe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+    
+    </div>
+  </div>
+
+<hr>
+
+<h2>Your favorites</h2>
+
+  <div class="recipe-body">
+    <div class="card-grid">
+
+        {{#each favorites}}
+          <div class="card">
+            <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
+            <div class="card-body">
+              <h5 class="card-title">{{this.label}}</h5>
+              <p class="card-text"> {{this.recipe.description}}</p>
+            </div>
+            <div class="card-links">
+              <div>
+               <a href="/recipes/user-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark">View recipe</a>
+              </div>
+        
+              <div>
+                <form action="/recipes/user-recipes/{{this.id}}/remove-favorite" method="POST">
+                  <button class="btn btn-sm btn-outline-dark">Delete favorite</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+    
+    </div>
+  </div>
+
+<hr>
+  <h2>Your reviews</h2>
+
+  <div class="recipe-body">
+    <div class="card-grid">
+
+        {{#each reviews}}
+          <div class="card">
+            {{!-- <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} /> --}}
+            <div class="card-body">
+              <h5 class="card-title">{{this.recipeName}}</h5>
+              <p class="card-text"> {{this.comment}}</p>
+            </div>
+            <div class="card-links">
+              <div>
+               <a href="/recipes/user-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark">View recipe</a>
+              </div>
+              <div>
+               <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark">Edit review</a>
+              </div>
+              <div>
+                <form action="/reviews/{{this.id}}/delete-review" method="POST">
+                  <button class="btn btn-sm btn-outline-dark">Delete review</button>
                 </form>
               </div>
             </div>

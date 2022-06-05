@@ -1,98 +1,74 @@
-<div class="container">
-  <h1>Recipes List</h1>
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">Search recipes from the web</h1>
+    <div class="col-lg-6 mx-auto">
+      {{!-- <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
+        web, upload your own and create your own "cookbook" with your favorite recipes.</p> --}}
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
-  <div class="rooms-body">
-    <form action="/recipes/search" method="GET">
+<form action="/recipes/search" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
       <label>
-        Search
-        <input type="text" name="q" />
+        
+        <input type="text" name="q" class="form-control form-control-dark text-white bg-dark" placeholder="Search..."/>
       </label>
 
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="mealType"
-          name="mealType"
-          value="Breakfast"
-        />
+      {{!-- <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Breakfast" />
         <label class="form-check-label" for="mealType">Breakfast</label>
       </div>
       <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="mealType"
-          name="mealType"
-          value="Lunch"
-        />
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Lunch" />
         <label class="form-check-label" for="mealType">Lunch</label>
       </div>
       <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          id="mealType"
-          name="mealType"
-          value="Dinner"
-        />
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Dinner" />
         <label class="form-check-label" for="mealType">Dinner</label>
-      </div>
+      </div> --}}
 
-      <button type="submit">SEARCH</button>
+      <button type="submit" class="btn btn-outline-light btn-md px-4">SEARCH</button>
     </form>
 
-    <div>
-
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="card-grid">
+<div class="container mt-5">
+
+  <div class="rooms-body">
+    
+
+
+
+    {{!-- <div class="card-grid">
       {{#each recipes}}
-        <div class="card">
-          <img
-            src={{this.image}}
-            class="card-img-top"
-            alt={{this.label}}
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{this.label}}</h5>
+      <div class="card">
+        <img src={{this.image}} class="card-img-top" alt={{this.label}} />
+        <div class="card-body">
+          <h5 class="card-title">{{this.label}}</h5>
 
-            <a
-              href="/recipes/{{this.id}}"
-              type="button"
-              class="btn btn-sm btn-outline-dark recipe-id"
-            >View Recipe Details Recipe ID</a>
+          <a href="/recipes/{{this.id}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View Recipe Details
+            Recipe ID</a>
 
-          </div>
         </div>
+      </div>
       {{/each}}
-    </div>
+    </div> --}}
 
     <div class="card-grid">
-      {{#each updatedRecipeData}}
-        <div class="card">
-          <img
-            src={{this.recipe.image}}
-            class="card-img-top"
-            alt={{this.recipe.label}}
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{this.recipe.label}}</h5>
+      {{#each newRecipeData.hits}}
+      <div class="card">
+        <img src={{this.recipe.image}} class="card-img-top" alt={{this.recipe.label}} />
+        <div class="card-body">
+          <h5 class="card-title">{{this.recipe.label}}</h5>
 
-            <a
-              href="/recipes/{{this.recipeId}}"
-              type="button"
-              class="btn btn-sm btn-outline-dark recipe-id"
-            >View Recipe Details Recipe ID</a>
+          <a href="/recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View Recipe
+            Details Recipe ID</a>
 
-          </div>
         </div>
+      </div>
       {{/each}}
     </div>
-    <a
-      href="{{recipeData._links.next.href}}"
-      type="button"
-      class="btn btn-sm btn-outline-dark"
-    >Next page</a>
+    <a href="{{newRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
   </div>
 </div>
