@@ -1,14 +1,11 @@
-/* const { default: axios } = require("axios");
+const baseUrl = 'http://localhost:3000';
+
+window.onload = async () => {
+    console.log(`Base url: ${baseUrl}`);
+    //make a request
+    const response = await axios.get(`${baseUrl}/profile`);
+    console.log(response);
+}
 
 
-window.onload = async => {
-    const logContainer = document.querySelector('#log-container'); //put on view
-    const signContainer = document.querySelector('#signup-container'); //put
-    const loginButton = document.querySelector('.login-button'); //put
-    const signupButton = document.querySelector('.signup-button'); //put
-
-    loginButton.addEventListener('click', async(event) => {
-        const loginPage = await axios.get('http://localhost:3000/login/json-list')
-
-    })
-} */
+console.log('Hello, AXIOS');
