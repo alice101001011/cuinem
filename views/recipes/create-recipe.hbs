@@ -24,14 +24,50 @@
           <label for="instructions" class="form-label">Instructions</label>
         </div>
 
-        <div class="mb-3">
+        {{!-- <div class="mb-3">
           <label for="ingredientLines" class="form-label">Ingredients</label>
           <div class="ingredient-lines">
             <div class="single-ingredient"><input required type="text" class="form-control" id="ingredientLines"
                 name="ingredientLines" /></div>
           </div>
-          <button type="button" class="btn btn-sm btn-outline-dark add-ingredient" id="add-ingredientline-button">Add ingredient line</button>
+          <button type="button" class="btn btn-sm btn-outline-dark add-ingredient" id="add-ingredientline-button">Add
+            ingredient line</button>
+        </div> --}}
+
+        <div class="mb-3" id="allIngredients">
+          <label for="ingredients" class="form-label">Add Ingredients</label>
+          <div class="row">
+            <div class="col-2">
+              <p>Quantity</p>
+            </div>
+            <div class="col-2">
+              <p>Measure</p>
+            </div>
+            <div class="col-8"> 
+              <p>Food (Description)</p>
+            </div>
+          </div>
+          <div class="ingredient-lines container">
+            <div class="single-ingredient row mb-2">
+              {{!-- <input required type="text" class="form-control" id="text" name="ingredients[0][text]" /> --}}
+              <div class="col-2"> <input required type="text" class="form-control col" id="quantity" name="ingredients[0][quantity]" /></div>
+              <div class="col-2"><input required type="text" class="form-control col" id="measure" name="ingredients[0][measure]" /></div>
+              <div class="col-8"><input required type="text" class="form-control col" id="food" name="ingredients[0][food]" /></div>
+            </div>
+          </div>
+          {{!-- <div class="ingredient-lines">
+            <div class="single-ingredient">
+              <input required type="text" class="form-control" id="text" name="ingredients[1][text]" />
+              <input required type="text" class="form-control" id="quantity" name="ingredients[1][quantity]" />
+              <input required type="text" class="form-control" id="measure" name="ingredients[1][measure]" />
+              <input required type="text" class="form-control" id="food" name="ingredients[1][food]" />
+            </div>
+          </div> --}}
+
         </div>
+        <div class="mb-4"><button type="button" class="btn btn-sm btn-outline-dark add-ingredient" id="add-ingredientline-button"><i
+            class="bi-plus-circle-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Add
+          ingredient</button></div>
 
         {{!-- <div class="mb-3">
           <label for="ingredients" class="form-label">Ingredients</label>

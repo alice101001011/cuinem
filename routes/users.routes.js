@@ -34,16 +34,17 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 router.get("/my-recipes", isLoggedIn, async (req, res, next) => {
   try {
     const currentUserId = req.session.user._id;
-    const recipes = await Recipe.find({ owner: currentUserId });
-    const reviews = await Review.find({ user: currentUserId });
-    const favorites = await Favorite.find({ user: currentUserId });
+    const recipes = await Recipe.find({ owner: currentUserId })
+    
+    //const reviews = await Review.find({ user: currentUserId });
+    //const favorites = await Favorite.find({ user: currentUserId });
     const user = await User.findById(currentUserId);
     //const { username, picture, email } = userData;
     res.render("users/user-recipes", {
       currentUserId,
       recipes,
-      reviews,
-      favorites,
+      // reviews,
+      // favorites,
       user,
     });
   } catch (err) {
@@ -56,17 +57,17 @@ router.get("/my-recipes", isLoggedIn, async (req, res, next) => {
 router.get("/my-cookbook", isLoggedIn, async (req, res, next) => {
   try {
     const currentUserId = req.session.user._id;
-    const recipes = await Recipe.find({ owner: currentUserId });
-    const reviews = await Review.find({ user: currentUserId });
-    const favorites = await Favorite.find({ user: currentUserId });
-    const user = await User.findById(currentUserId);
+    //const recipes = await Recipe.find({ owner: currentUserId });
+    //const reviews = await Review.find({ user: currentUserId });
+    const favorites = await Recipe.find({ favorited: currentUserId })
+    //const user = await User.findById(currentUserId);
     //const { username, picture, email } = userData;
     res.render("users/user-cookbook", {
       currentUserId,
-      recipes,
-      reviews,
+      // recipes,
+      // reviews,
       favorites,
-      user,
+      //user,
     });
   } catch (err) {
     next(err);
