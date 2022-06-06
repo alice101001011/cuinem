@@ -36,7 +36,7 @@
 <div class="container mt-5">
 
   <div class="rooms-body">
-
+    {{!-- {{#if newRecipeData.hits}} --}}
     <div class="card-grid">
       {{#each newRecipeData.hits}}
       <div class="card">
@@ -57,6 +57,29 @@
       </div>
       {{/each}}
     </div>
+    {{!-- {{else}} --}}
+
+    {{!-- <div class="card-grid">
+      {{#each communityRecipeData}}
+      <div class="card">
+        {{#if this.recipe.imageUrl}}
+        <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
+        {{/if}}
+        <div class="card-body">
+          <h5 class="card-title">{{this.recipe.label}}</h5>
+
+          <a href="/community-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View
+            Recipe Details</a>
+
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+
+    {{/if}} --}}
+
+
     <a href="{{newRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
   </div>
 </div>

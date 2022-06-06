@@ -12,8 +12,11 @@
       <h3>Description: </h3>
       <p>{{recipe.recipe.description}}</p>
       <h3>Ingredients: </h3>
-      <p>{{recipe.recipe.ingredientLines}}</p>
+      {{#each recipe.recipe.ingredientLines}}
+      <p>{{this}}</p>
+      {{/each}}
       <ul>
+        
         {{#each recipe.recipe.ingredients}}
         <li>{{this.text}}</li>
         {{/each}}
