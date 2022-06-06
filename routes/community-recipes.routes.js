@@ -112,22 +112,18 @@ router.post(
   fileUploader.single("imageUpload"),
   async (req, res, next) => {
     try {
-      console.log(req.body);
+      //console.log(req.body);
       const {
-        // recipe: {
         label,
         description,
+        instructions,
         existingImage,
         ingredientLines,
-        ingredients, //: [{ text, quantity, measure, food, weight, foodId }],
+        ingredients,
         cuisineType,
         mealType,
         dishType,
-        // },
-        // owner,
       } = req.body;
-
-      //const { text, quantity, measure, food, weight, foodId } = req.body.recipe.ingredients
 
       if (req.file) {
         imageUrl = req.file.path;
@@ -139,18 +135,10 @@ router.post(
         recipe: {
           label,
           description,
+          instructions,
           imageUrl,
           ingredientLines,
           ingredients,
-          // [{
-          //   text,
-          //   quantity,
-          //   measure,
-          //   food,
-          //   weight,
-          //   foodId,
-          // }],
-
           cuisineType,
           mealType,
           dishType,
@@ -194,7 +182,17 @@ router.post(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { label, description, existingImage } = req.body;
+      const {
+        label,
+        description,
+        instructions,
+        existingImage,
+        ingredientLines,
+        ingredients,
+        cuisineType,
+        mealType,
+        dishType,
+      } = req.body;
 
       let imageUrl;
       if (req.file) {
@@ -209,7 +207,13 @@ router.post(
           recipe: {
             label,
             description,
+            instructions,
             imageUrl,
+            ingredientLines,
+            ingredients,
+            cuisineType,
+            mealType,
+            dishType,
           },
         },
         {
@@ -217,7 +221,6 @@ router.post(
         }
       );
 
-      console.log();
       res.redirect("/profile");
     } catch (error) {
       next(error);
@@ -232,25 +235,38 @@ router.post("/:id/save-favorite", isLoggedIn, async (req, res, next) => {
   try {
     const recipeId = req.params.id;
     const currentUser = req.session.user._id;
-    const user = await User.findById(currentUser); //populate("favorites")
-    const recipe = await Recipe.findById(recipeId);
+    // const user = await User.findById(currentUser); //populate("favorites")
+    // const recipe = await Recipe.findById(recipeId);
 
-    const favoriteExists = await Favorite.exists({
-      recipeId: recipeId,
-      user: currentUser,
-    });
+    // const favoriteExists = await Favorite.exists({
+    //   recipeId: recipeId,
+    //   user: currentUser,
+    // });
 
-    if (!favoriteExists) {
-      const createdFavorite = await Favorite.create({
-        recipeId: recipeId,
-        user: currentUser,
-        label: recipe.recipe.label,
-      });
+    await User.findByIdAndUpdate(
+      currentUser,
+      { $addToSet: { favoriteRecipes: recipeId } },
+      { new: true }
+    );
 
-      res.redirect(`/community-recipes/${recipeId}`);
-    } else {
-      res.redirect("/community-recipes");
-    }
+    await Recipe.findByIdAndUpdate(
+      recipeId,
+      { $addToSet: { favorited: currentUser } },
+      { new: true }
+    );
+
+    res.redirect(`/community-recipes/${recipeId}`);
+    // if (!favoriteExists) {
+    //   const createdFavorite = await Favorite.create({
+    //     recipeId: recipeId,
+    //     user: currentUser,
+    //     label: recipe.recipe.label,
+    //   });
+
+    //   res.redirect(`/community-recipes/${recipeId}`);
+    // } else {
+    //   res.redirect("/community-recipes");
+    // }
   } catch (error) {
     next(error);
     res.render("recipes");
@@ -262,10 +278,22 @@ router.post("/:id/remove-favorite", isLoggedIn, async (req, res, next) => {
   try {
     console.log("params", req.params);
 
-    const favoriteId = req.params.id;
-    const favorite = await Favorite.findByIdAndDelete(favoriteId);
+    const recipeId = req.params.id;
+    const currentUser = req.session.user._id;
 
-    res.redirect(`/profile/my-cookbook`);
+    await User.findByIdAndUpdate(
+      currentUser,
+      { $pull: { favoriteRecipes: recipeId } },
+      { new: true }
+    );
+
+    await Recipe.findByIdAndUpdate(
+      recipeId,
+      { $pull: { favorited: currentUser } },
+      { new: true }
+    );
+
+    res.redirect("/profile/my-cookbook");
   } catch (error) {
     next(error);
     res.render("recipes");
@@ -290,7 +318,7 @@ router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
         };
     } else {
       await Recipe.findByIdAndDelete(recipeId);
-      res.redirect("/profile");
+      res.redirect("/profile/my-recipes");
     }
   } catch (error) {
     next(error);
@@ -304,7 +332,9 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id)
       .populate("owner")
-      .populate("reviews");
+      .populate("reviews"); //.populate("favorites");
+
+    //const favoritesCount = recipe.favorites.length
 
     console.log(recipe);
 

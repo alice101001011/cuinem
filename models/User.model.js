@@ -19,6 +19,7 @@ const userSchema = new Schema(
     profilePic: {
       type: String,
     },
+    favoriteRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
   },
   {
     timestamps: true,

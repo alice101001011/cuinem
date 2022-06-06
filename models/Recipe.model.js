@@ -12,6 +12,7 @@ const recipeSchema = new Schema({
     url: String,
     ingredientLines: [String],
     ingredients: [
+
       {
         text: String,
         quantity: 0,
@@ -78,7 +79,8 @@ const recipeSchema = new Schema({
   },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-  favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
+  //favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
+  favorited: [{ type: Schema.Types.ObjectId, ref: "User" }],
   recipeId: String,
   created: {
     type: Date,

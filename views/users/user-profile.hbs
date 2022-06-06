@@ -244,16 +244,16 @@
 
 
             <div>
-              <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark">View
+              <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View
                 recipe</a>
             </div>
             <div>
-              <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark">Edit
+              <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit
                 review</a>
             </div>
             <div>
               <form action="/reviews/{{this.id}}/delete-review" method="POST">
-                <button class="btn btn-sm btn-outline-dark">Delete review</button>
+                <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
               </form>
             </div>
           </div>

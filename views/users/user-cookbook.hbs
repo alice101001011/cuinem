@@ -7,23 +7,22 @@
 
             {{#each favorites}}
             <div class="card">
-                {{#if this.imageUrl}}
-                <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
+                {{#if this.recipe.imageUrl}}
+                <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
                 {{/if}}
                 <div class="card-body">
-                    <h5 class="card-title">{{this.label}}</h5>
+                    <h5 class="card-title">{{this.recipe.label}}</h5>
                     <p class="card-text"> {{this.recipe.description}}</p>
                 </div>
                 <div class="card-links">
                     <div>
-                        <a href="/community-recipes/{{this.recipeId}}" type="button"
-                            class="btn btn-sm btn-outline-dark">View
-                            recipe</a>
+                        <a href="/community-recipes/{{this._id}}" type="button"
+                            class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
                     </div>
 
                     <div>
                         <form action="/community-recipes/{{this.id}}/remove-favorite" method="POST">
-                            <button class="btn btn-sm btn-outline-dark">Delete favorite</button>
+                            <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove</button>
                         </form>
                     </div>
                 </div>

@@ -28,14 +28,19 @@
 
         <div class="mb-3">
           <label for="ingredientLines" class="form-label">Ingredients</label>
-          <ul id="ingredient-lines">
-            <li><input required type="text" class="form-control single-ingredient" id="ingredientLines"
-                name="ingredientLines" /></li>
-          </ul>
-          <button type="button" class="btn btn-sm btn-outline-dark add-ingredient">Add ingredient line</button>
+          <div class="ingredient-lines">
+            {{#each recipe.ingredientLines}}
+            <div class="single-ingredient"><input type="text" class="form-control" id="ingredientLines"
+                name="ingredientLines" value="{{this}}"/></div>
+                {{/each}}
+                <div class="single-ingredient"><input type="text" class="form-control" id="ingredientLines"
+                name="ingredientLines"/></div>
+          </div>
+          
+          <button type="button" class="btn btn-sm btn-outline-dark add-ingredient" id="add-ingredientline-button">Add ingredient line</button>
         </div>
 
-        <div class="mb-3">
+        {{!-- <div class="mb-3">
           <label for="ingredients" class="form-label">Ingredients</label>
           <div class="ingredient-ul">
             <div class="ingredient-li"><input type="text" class="form-control single-ingredient" name="text" /></div>
@@ -45,7 +50,7 @@
 
           <button type="button" class="btn btn-sm btn-outline-dark" id="add-ingredient-button">Add ingredient
             line</button>
-        </div>
+        </div> --}}
 
         <div class="input-group input-group-sm mb-3">
           <label class="input-group-text" for="cuisineType">Cuisine type:</label>
