@@ -15,14 +15,63 @@ router.get("/", isLoggedIn, async (req, res, next) => {
     const recipes = await Recipe.find({ owner: currentUserId });
     const reviews = await Review.find({ user: currentUserId });
     const favorites = await Favorite.find({ user: currentUserId });
-    //const user = await User.findById(currentUserId);
-    const { username, picture, email } = userData;
-    res.render("users/user-profile", { currentUserId, recipes, reviews, favorites, userData });
+    const user = await User.findById(currentUserId);
+    //const { username, picture, email } = userData;
+    res.render("users/user-profile", {
+      currentUserId,
+      recipes,
+      reviews,
+      favorites,
+      user,
+    });
   } catch (err) {
     next(err);
   }
 });
 
+// Display user's recipes
+
+router.get("/my-recipes", isLoggedIn, async (req, res, next) => {
+  try {
+    const currentUserId = req.session.user._id;
+    const recipes = await Recipe.find({ owner: currentUserId });
+    const reviews = await Review.find({ user: currentUserId });
+    const favorites = await Favorite.find({ user: currentUserId });
+    const user = await User.findById(currentUserId);
+    //const { username, picture, email } = userData;
+    res.render("users/user-recipes", {
+      currentUserId,
+      recipes,
+      reviews,
+      favorites,
+      user,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Display user's favorite recipes a.k.a. cookbook
+
+router.get("/my-cookbook", isLoggedIn, async (req, res, next) => {
+  try {
+    const currentUserId = req.session.user._id;
+    const recipes = await Recipe.find({ owner: currentUserId });
+    const reviews = await Review.find({ user: currentUserId });
+    const favorites = await Favorite.find({ user: currentUserId });
+    const user = await User.findById(currentUserId);
+    //const { username, picture, email } = userData;
+    res.render("users/user-cookbook", {
+      currentUserId,
+      recipes,
+      reviews,
+      favorites,
+      user,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 //edit profile
 
@@ -30,54 +79,53 @@ router.get("/profile-edit", isLoggedIn, async (req, res) => {
   try {
     const currentUserId = req.session.user._id;
     const profile = await User.find({ owner: currentUserId });
-    res.render("/users/edit-profile", {profile});    
+    res.render("/users/edit-profile", { profile });
   } catch (err) {
     next(err);
   }
-})
+});
 
-router.post("/edit-profile", async(req, res, next) => {
+router.post("/edit-profile", async (req, res, next) => {
   try {
     const { username, email } = req.body;
     await User.findByIdAndUpdate({
-      username, email,
+      username,
+      email,
       owner: req.session.user._id,
     });
   } catch (err) {
     next(err);
   }
-})
+});
 
-
-router.post("/edit/username-update", async(req, res, next) => {
+router.post("/edit/username-update", async (req, res, next) => {
   try {
     const { username } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { username });
-    res.redirect("/profile")
+    res.redirect("/profile");
   } catch (err) {
     next(err);
   }
-})
+});
 
-router.post("/edit/pwd-update", async(req, res, next) => {
+router.post("/edit/pwd-update", async (req, res, next) => {
   try {
     const { username } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { password });
-    res.redirect("/profile")
+    res.redirect("/profile");
   } catch (err) {
     next(err);
   }
-})
+});
 
-router.post("/edit/pic-update", async(req, res, next) => {
+router.post("/edit/pic-update", async (req, res, next) => {
   try {
     const { username } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { username });
-    res.redirect("/profile")
+    res.redirect("/profile");
   } catch (err) {
     next(err);
   }
-})
-
+});
 
 module.exports = router;

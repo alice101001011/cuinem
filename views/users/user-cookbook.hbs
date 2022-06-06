@@ -1,0 +1,35 @@
+<h1>My Cookbook</h1>
+
+<div class="container">
+
+    <div class="recipe-body">
+        <div class="card-grid">
+
+            {{#each favorites}}
+            <div class="card">
+                {{#if this.imageUrl}}
+                <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
+                {{/if}}
+                <div class="card-body">
+                    <h5 class="card-title">{{this.label}}</h5>
+                    <p class="card-text"> {{this.recipe.description}}</p>
+                </div>
+                <div class="card-links">
+                    <div>
+                        <a href="/community-recipes/{{this.recipeId}}" type="button"
+                            class="btn btn-sm btn-outline-dark">View
+                            recipe</a>
+                    </div>
+
+                    <div>
+                        <form action="/community-recipes/{{this.id}}/remove-favorite" method="POST">
+                            <button class="btn btn-sm btn-outline-dark">Delete favorite</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>

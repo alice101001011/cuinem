@@ -1,0 +1,38 @@
+<h1>My Recipes</h1>
+
+<div class="container">
+
+    <div class="recipe-body">
+        <div class="card-grid">
+
+            {{#each recipes}}
+            <div class="card">
+                {{#if this.recipe.imageUrl}}
+                <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.label}} />
+                {{/if}}
+                <div class="card-body">
+                    <h5 class="card-title">{{this.recipe.label}}</h5>
+                    <p class="card-text"> {{this.recipe.description}}</p>
+                </div>
+                <div class="card-links">
+                    <div>
+                        <a href="/community-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark">View
+                            recipe</a>
+                    </div>
+                    <div>
+                        <a href="/community-recipes/{{this._id}}/edit" type="button"
+                            class="btn btn-sm btn-outline-dark">Edit
+                            recipe</a>
+                    </div>
+                    <div>
+                        <form action="/community-recipes/{{this._id}}/delete" method="POST">
+                            <button class="btn btn-sm btn-outline-dark">Delete recipe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>
