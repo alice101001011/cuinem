@@ -20,10 +20,10 @@ const isOwner = require("../middleware/isOwner");
 
 router.get("/", async (req, res, next) => {
   try {
-    const newRecipeData = await Recipe.find();
-    console.log(newRecipeData);
+    const communityRecipeData = await Recipe.find();
+    console.log(communityRecipeData);
     res.render("recipes/recipes-list-users", {
-      newRecipeData,
+      communityRecipeData,
       pageTitle: "Community Recipes",
     });
   } catch (err) {
@@ -108,7 +108,7 @@ router.get("/create-recipe", isLoggedIn, (req, res, next) => {
 });
 
 router.post(
-  "/create",
+  "/create-recipe",
   fileUploader.single("imageUpload"),
   async (req, res, next) => {
     try {
@@ -158,7 +158,7 @@ router.post(
         owner: req.session.user._id,
       });
 
-      res.redirect("/profile");
+      res.redirect("/profile/my-recipes");
     } catch (error) {
       next(error);
     }

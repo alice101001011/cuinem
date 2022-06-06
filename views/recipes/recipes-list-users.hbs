@@ -25,7 +25,10 @@
             <label class="form-check-label" for="mealType">Dinner</label>
           </div> --}}
 
+          
           <button type="submit" class="btn btn-outline-light btn-md px-4 button-addon2">SEARCH</button>
+
+
         </form>
 
       </div>
@@ -62,7 +65,7 @@
     </form> --}}
 
     <div class="card-grid">
-      {{#each newRecipeData}}
+      {{#each communityRecipeData}}
       <div class="card">
         {{#if this.recipe.imageUrl}}
         <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
@@ -77,6 +80,6 @@
       </div>
       {{/each}}
     </div>
-    <a href="{{newRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
+    <a href="{{communityRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
   </div>
 </div>
