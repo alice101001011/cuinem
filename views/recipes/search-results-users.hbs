@@ -1,27 +1,33 @@
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-8 fw-bold text-white">Community Recipes Search Results for {{q}}</h1>
+    {{!-- <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
+        web, upload your own and create your own "cookbook" with your favorite recipes.</p>
+    </div> --}}
+  </div>
+</div>
 
-<div class="container">
-<h1>Recipes Search results</h1>
 
-<div class="rooms-body">
 
-</form>
-<div class="card-grid">
-  {{#each recipes}}
-    <div class="card">
-      {{#if this.recipe.imageUrl}}
-      <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
-      {{/if}}
-      <div class="card-body">
-        <h5 class="card-title">{{this.recipe.label}}</h5>
-        <a
-              {{!-- href="/recipes/{{this.recipe.uri}}" --}}
-              href="{{this._id}}"
-              type="button"
-              class="btn btn-sm btn-outline-dark"
-            >View Recipe Details</a>
+<div class="container mt-5">
+
+  <div class="rooms-body">
+
+    </form>
+    <div class="card-grid">
+      {{#each recipes}}
+      <div class="card">
+        {{#if this.recipe.imageUrl}}
+        <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
+        {{/if}}
+        <div class="card-body">
+          <h5 class="card-title">{{this.recipe.label}}</h5>
+          <a {{!-- href="/recipes/{{this.recipe.uri}}" --}} href="{{this._id}}" type="button"
+            class="btn btn-sm btn-outline-dark">View Recipe Details</a>
+        </div>
       </div>
+      {{/each}}
     </div>
-  {{/each}}
-</div>
-</div>
+  </div>
 </div>

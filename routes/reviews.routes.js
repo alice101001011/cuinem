@@ -17,7 +17,7 @@ router.get("/:id/review", isLoggedIn, async (req, res, next) => {
     const ownerId = recipe.owner._id.valueOf();
 
     if (ownerId === currentUserId) {
-      res.redirect("/recipes/user-recipes"),
+      res.redirect(`/community-recipes/${id}`),
         {
           errorMessage:
             "You can't write a review for this recipe, because you are the owner",
@@ -53,7 +53,7 @@ router.post("/:id/review", isLoggedIn, async (req, res, next) => {
 
     // console.log(createdReview);
     // console.log(updateRecipe);
-    res.redirect(`/recipes/user-recipes/${recipeId}`);
+    res.redirect(`/community-recipes/${recipeId}`);
   } catch (error) {
     next(error);
   }

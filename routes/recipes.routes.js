@@ -52,7 +52,10 @@ router.get("/", async (req, res, next) => {
     // console.log(recipes)
     //res.json(updatedRecipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
     //res.render("recipes/recipes-list", { hitsArray });
-    res.render("recipes/recipes-list", { newRecipeData, pageTitle: "Recipe Search" });
+    res.render("recipes/recipes-list", {
+      newRecipeData,
+      pageTitle: "Recipe Search",
+    });
   } catch (err) {
     next(err);
   }
@@ -144,309 +147,321 @@ router.get("/search", async (req, res, next) => {
     //   console.log("req.query", req.query)
     //  console.log("res body", res.body)
     //res.json(recipeData) // <- if you comment the line below out and uncomment this, you'll the that we get the data as json in the browser
-    res.render("recipes/search-results", { newRecipeData, pageTitle: "Recipe Search Results" });
+    res.render("recipes/search-results", {
+      newRecipeData,
+      pageTitle: "Recipe Search Results",
+    });
   } catch (err) {
     next(err);
   }
 });
 
-// Display user created recipes
+// // Display user created recipes
 
-router.get("/user-recipes", async (req, res, next) => {
-  try {
-    const newRecipeData = await Recipe.find();
-    console.log(newRecipeData);
-    res.render("recipes/recipes-list-users", { newRecipeData, pageTitle: "Community Recipes" });
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get("/user-recipes", async (req, res, next) => {
+//   try {
+//     const newRecipeData = await Recipe.find();
+//     console.log(newRecipeData);
+//     res.render("recipes/recipes-list-users", {
+//       newRecipeData,
+//       pageTitle: "Community Recipes",
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-// Display search results for user recipes
+// // Display search results for user recipes
 
-router.get("/user-recipes/search", async (req, res, next) => {
-  try {
+// router.get("/user-recipes/search", async (req, res, next) => {
+//   try {
+//     // const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
 
+//     // const mealQ = "Breakfast";
 
-    // const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
+//     // const dishType = [
+//     //   "Alcohol-cocktail",
+//     //   "Biscuits and cookies",
+//     //   "Bread",
+//     //   "Cereals",
+//     //   "Condiments and sauces",
+//     //   "Drinks",
+//     //   "Desserts",
+//     //   "Egg",
+//     //   "Main course",
+//     //   "Omelet",
+//     //   "Pancake",
+//     //   "Preps",
+//     //   "Preserve",
+//     //   "Salad",
+//     //   "Sandwiches",
+//     //   "Soup",
+//     //   "Starter",
+//     // ];
 
-    // const mealQ = "Breakfast";
+//     // const dishQ = "Bread";
 
-    // const dishType = [
-    //   "Alcohol-cocktail",
-    //   "Biscuits and cookies",
-    //   "Bread",
-    //   "Cereals",
-    //   "Condiments and sauces",
-    //   "Drinks",
-    //   "Desserts",
-    //   "Egg",
-    //   "Main course",
-    //   "Omelet",
-    //   "Pancake",
-    //   "Preps",
-    //   "Preserve",
-    //   "Salad",
-    //   "Sandwiches",
-    //   "Soup",
-    //   "Starter",
-    // ];
+//     // const cuisineType = [
+//     //   "American",
+//     //   "Asian",
+//     //   "British",
+//     //   "Caribbean",
+//     //   "Central Europe",
+//     //   "Chinese",
+//     //   "Eastern Europe",
+//     //   "French",
+//     //   "Indian",
+//     //   "Italian",
+//     //   "Japanese",
+//     //   "Kosher",
+//     //   "Mediterranean",
+//     //   "Mexican",
+//     //   "Middle Eastern",
+//     //   "Nordic",
+//     //   "South American",
+//     //   "South East Asian",
+//     // ];
+//     // const cuisineQ = "French";
+//     console.log(req.query);
+//     let query = req.query.q;
 
-    // const dishQ = "Bread";
+//     let recipes = await Recipe.find({
 
-    // const cuisineType = [
-    //   "American",
-    //   "Asian",
-    //   "British",
-    //   "Caribbean",
-    //   "Central Europe",
-    //   "Chinese",
-    //   "Eastern Europe",
-    //   "French",
-    //   "Indian",
-    //   "Italian",
-    //   "Japanese",
-    //   "Kosher",
-    //   "Mediterranean",
-    //   "Mexican",
-    //   "Middle Eastern",
-    //   "Nordic",
-    //   "South American",
-    //   "South East Asian",
-    // ];
-    // const cuisineQ = "French";
-console.log(req.query)
-    let searchQuery = req.query.q
+//       //label:{$regex: searchQuery}
+//    $text: { $search: query},
+//     });
+//     //res.json(recipes)
+//     //console.log(recipes)
 
-    let recipes = await Recipe.find({ $text: { $search: searchQuery, $diacriticSensitive: true } });
-//res.json(recipes) 
-//console.log(recipes)
-
-    
-  res.render("recipes/search-results-users", { pageTitle: 'Search Results', recipes });
-  } catch (err) {
-    next(err);
-  }
-});
+//     res.render("recipes/search-results-users", {
+//       pageTitle: "Search Results",
+//       recipes,
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 // Ceate new Recipe (only for logged in users)
 
-router.get("/create", isLoggedIn, (req, res, next) => {
-  res.render("recipes/create-recipe", {pageTitle: "Create Recipe"});
-});
+// router.get("/create", isLoggedIn, (req, res, next) => {
+//   res.render("recipes/create-recipe", { pageTitle: "Create Recipe" });
+// });
 
-router.post("/create",
-  fileUploader.single("imageUpload"),
-  async (req, res, next) => {
-    try {
+// router.post(
+//   "/create",
+//   fileUploader.single("imageUpload"),
+//   async (req, res, next) => {
+//     try {
+//       console.log(req.body);
+//       const {
+//         // recipe: {
+//         label,
+//         description,
+//         existingImage,
+//         ingredientLines,
+//         ingredients, //: [{ text, quantity, measure, food, weight, foodId }],
+//         cuisineType,
+//         mealType,
+//         dishType,
+//         // },
+//         // owner,
+//       } = req.body;
 
-console.log(req.body)
-      const {
-        // recipe: {
-          label,
-          description,
-          existingImage,
-          ingredientLines,
-          ingredients, //: [{ text, quantity, measure, food, weight, foodId }],
-          cuisineType,
-          mealType,
-          dishType,
-        // },
-        // owner,
-      } = req.body;
-      
+//       //const { text, quantity, measure, food, weight, foodId } = req.body.recipe.ingredients
 
-      //const { text, quantity, measure, food, weight, foodId } = req.body.recipe.ingredients
+//       if (req.file) {
+//         imageUrl = req.file.path;
+//       } else {
+//         imageUrl = existingImage;
+//       }
 
-      if (req.file) {
-        imageUrl = req.file.path;
-      } else {
-        imageUrl = existingImage;
-      }
+//       await Recipe.create({
+//         recipe: {
+//           label,
+//           description,
+//           imageUrl,
+//           ingredientLines,
+//           ingredients,
+//           // [{
+//           //   text,
+//           //   quantity,
+//           //   measure,
+//           //   food,
+//           //   weight,
+//           //   foodId,
+//           // }],
 
-      await Recipe.create({
-        recipe: {
-          label,
-          description,
-          imageUrl,
-          ingredientLines,
-          ingredients,
-            // [{
-            //   text,
-            //   quantity,
-            //   measure,
-            //   food,
-            //   weight,
-            //   foodId,
-            // }],
-          
-          cuisineType,
-          mealType,
-          dishType,
-        },
-        owner: req.session.user._id,
-      });
+//           cuisineType,
+//           mealType,
+//           dishType,
+//         },
+//         owner: req.session.user._id,
+//       });
 
-      res.redirect("/profile");
-    } catch (error) {
-      next(error);
-    }
-  }
-);
+//       res.redirect("/profile");
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
-// Edit Recipe (only visible if logged in and owner of that Recipe)
+// // Edit Recipe (only visible if logged in and owner of that Recipe)
 
-router.get("/user-recipes/:id/edit", isLoggedIn, async (req, res, next) => {
-  try {
-    const recipeId = req.params.id;
-    const currentUserId = req.session.user._id;
-    const singleRecipe = await Recipe.findById(recipeId);
-    const ownerId = singleRecipe.owner._id.valueOf();
+// router.get("/user-recipes/:id/edit", isLoggedIn, async (req, res, next) => {
+//   try {
+//     const recipeId = req.params.id;
+//     const currentUserId = req.session.user._id;
+//     const singleRecipe = await Recipe.findById(recipeId);
+//     const ownerId = singleRecipe.owner._id.valueOf();
 
-    if (ownerId !== currentUserId || !ownerId) {
-      res.redirect("/recipes"),
-        {
-          errorMessage:
-            "You can't edit this recipe, because you are not the owner",
-        };
-    } else {
-      res.render("recipes/edit-recipe", singleRecipe);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
+//     if (ownerId !== currentUserId || !ownerId) {
+//       res.redirect("/recipes"),
+//         {
+//           errorMessage:
+//             "You can't edit this recipe, because you are not the owner",
+//         };
+//     } else {
+//       res.render("recipes/edit-recipe", singleRecipe);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
-router.post("/user-recipes/:id/edit",
-  fileUploader.single("imageUpload"),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const { label, description, existingImage } = req.body;
+// router.post(
+//   "/user-recipes/:id/edit",
+//   fileUploader.single("imageUpload"),
+//   async (req, res, next) => {
+//     try {
+//       const { id } = req.params;
+//       const { label, description, existingImage } = req.body;
 
-      let imageUrl;
-      if (req.file) {
-        imageUrl = req.file.path;
-      } else {
-        imageUrl = existingImage;
-      }
+//       let imageUrl;
+//       if (req.file) {
+//         imageUrl = req.file.path;
+//       } else {
+//         imageUrl = existingImage;
+//       }
 
-      await Recipe.findByIdAndUpdate(
-        id,
-        {
-          recipe: {
-            label,
-            description,
-            imageUrl,
-          },
-        },
-        {
-          new: true,
-        }
-      );
+//       await Recipe.findByIdAndUpdate(
+//         id,
+//         {
+//           recipe: {
+//             label,
+//             description,
+//             imageUrl,
+//           },
+//         },
+//         {
+//           new: true,
+//         }
+//       );
 
-      console.log();
-      res.redirect("/profile");
-    } catch (error) {
-      next(error);
-      res.render("recipes");
-    }
-  }
-);
+//       console.log();
+//       res.redirect("/profile");
+//     } catch (error) {
+//       next(error);
+//       res.render("recipes");
+//     }
+//   }
+// );
 
 // Save recipe to favorites (only for user created recipes)
 
-router.post("/user-recipes/:id/save-favorite",
-  isLoggedIn,
-  async (req, res, next) => {
-    try {
-      const recipeId = req.params.id;
-      const currentUser = req.session.user._id;
-      const user = await User.findById(currentUser); //populate("favorites")
-      const recipe = await Recipe.findById(recipeId);
+// router.post(
+//   "/user-recipes/:id/save-favorite",
+//   isLoggedIn,
+//   async (req, res, next) => {
+//     try {
+//       const recipeId = req.params.id;
+//       const currentUser = req.session.user._id;
+//       const user = await User.findById(currentUser); //populate("favorites")
+//       const recipe = await Recipe.findById(recipeId);
 
-      const favoriteExists = await Favorite.exists({
-        recipeId: recipeId,
-        user: currentUser,
-      });
+//       const favoriteExists = await Favorite.exists({
+//         recipeId: recipeId,
+//         user: currentUser,
+//       });
 
-      if (!favoriteExists) {
-        const createdFavorite = await Favorite.create({
-          recipeId: recipeId,
-          user: currentUser,
-          label: recipe.recipe.label,
-        });
+//       if (!favoriteExists) {
+//         const createdFavorite = await Favorite.create({
+//           recipeId: recipeId,
+//           user: currentUser,
+//           label: recipe.recipe.label,
+//         });
 
-        res.redirect(`/recipes/user-recipes/${recipeId}`);
-      } else {
-        res.redirect("/recipes/user-recipes");
-      }
-    } catch (error) {
-      next(error);
-      res.render("recipes");
-    }
-  }
-);
+//         res.redirect(`/recipes/user-recipes/${recipeId}`);
+//       } else {
+//         res.redirect("/recipes/user-recipes");
+//       }
+//     } catch (error) {
+//       next(error);
+//       res.render("recipes");
+//     }
+//   }
+// );
 
-// Remove recipe from favorites (only for user created recipes)
-router.post("/user-recipes/:id/remove-favorite",
-  isLoggedIn,
-  async (req, res, next) => {
-    try {
-      console.log("params", req.params);
+// // Remove recipe from favorites (only for user created recipes)
+// router.post(
+//   "/user-recipes/:id/remove-favorite",
+//   isLoggedIn,
+//   async (req, res, next) => {
+//     try {
+//       console.log("params", req.params);
 
-      const favoriteId = req.params.id;
-      const favorite = await Favorite.findByIdAndDelete(favoriteId);
+//       const favoriteId = req.params.id;
+//       const favorite = await Favorite.findByIdAndDelete(favoriteId);
 
-      res.redirect(`/profile`);
-    } catch (error) {
-      next(error);
-      res.render("recipes");
-    }
-  }
-);
+//       res.redirect(`/profile`);
+//     } catch (error) {
+//       next(error);
+//       res.render("recipes");
+//     }
+//   }
+// );
 
-// Delete own recipe
+// // Delete own recipe
 
-router.post("/user-recipes/:id/delete", isLoggedIn, async (req, res, next) => {
-  try {
-    const recipeId = req.params.id;
-    const currentUserId = req.session.user._id;
-    const singleRecipe = await Recipe.findById(recipeId);
-    console.log(singleRecipe);
-    const ownerId = singleRecipe.owner._id.valueOf();
+// router.post("/user-recipes/:id/delete", isLoggedIn, async (req, res, next) => {
+//   try {
+//     const recipeId = req.params.id;
+//     const currentUserId = req.session.user._id;
+//     const singleRecipe = await Recipe.findById(recipeId);
+//     console.log(singleRecipe);
+//     const ownerId = singleRecipe.owner._id.valueOf();
 
-    if (ownerId !== currentUserId || !ownerId) {
-      res.redirect("/recipes"),
-        {
-          errorMessage:
-            "You can't delete this recipe, because you are not the owner",
-        };
-    } else {
-      await Recipe.findByIdAndDelete(recipeId);
-      res.redirect("/profile");
-    }
-  } catch (error) {
-    next(error);
-  }
-});
+//     if (ownerId !== currentUserId || !ownerId) {
+//       res.redirect("/recipes"),
+//         {
+//           errorMessage:
+//             "You can't delete this recipe, because you are not the owner",
+//         };
+//     } else {
+//       await Recipe.findByIdAndDelete(recipeId);
+//       res.redirect("/profile");
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
-// Display details of any user created recipe (visible to logged out as well)
+// // Display details of any user created recipe (visible to logged out as well)
 
-router.get("/user-recipes/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const recipe = await Recipe.findById(id)
-      .populate("owner")
-      .populate("reviews");
+// router.get("/user-recipes/:id", async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const recipe = await Recipe.findById(id)
+//       .populate("owner")
+//       .populate("reviews");
 
-    console.log(recipe);
+//     console.log(recipe);
 
-    res.render("recipes/recipe-details-user", { recipe });
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.render("recipes/recipe-details-user", { recipe });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // Display details of any api recipe (visible to logged out as well)
 

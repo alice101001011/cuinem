@@ -1,11 +1,11 @@
 const { Schema, model } = require("mongoose");
 
-
 const recipeSchema = new Schema({
   recipe: {
     uri: String,
     label: String,
     description: { type: String, max: 500 },
+    instructions: { type: String, max: 1000 },
     imageUrl: String,
     image: String,
     source: String,
@@ -78,6 +78,7 @@ const recipeSchema = new Schema({
   },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+  favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
   recipeId: String,
   created: {
     type: Date,
@@ -85,8 +86,7 @@ const recipeSchema = new Schema({
   },
 });
 
-//recipeSchema.index({recipe: {label: "text", description: "text"}})
-recipeSchema.index({'$**': 'text'})
+recipeSchema.index({ "$**": "text" });
 
 const Recipe = model("Recipe", recipeSchema);
 

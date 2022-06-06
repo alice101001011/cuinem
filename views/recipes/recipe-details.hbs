@@ -20,36 +20,11 @@
       </ul>
       <img src="{{recipe.recipe.image}}" alt="" />
       <p>Source: <a href="{{recipe.recipe.url}}" target="_blank">View full recipe on original site</a></p>
-      
+
       {{!-- <form action="/recipes/{{recipe.recipeId}}/save-favorite" method="POST">
         <button class="btn btn-sm btn-outline-dark">Save recipe to favorites</button>
       </form> --}}
       <hr>
-
-{{!-- 
-      <h3>Reviews: </h3>
-
-      <ul class="list-group list-group-flush">
-        {{#each reviews}}
-        <li class="list-group-item">
-          <p>{{this.comment}}</p>
-          <p>{{this.user.username}}</p>
-
-          {{#if isLoggedIn}}
-          <a href="/reviews/{{this.recipeId}}/edit-review" type="button" class="btn btn-sm btn-outline-dark">Edit
-            review</a>
-          <form action="/reviews/{{this.recipeId}}/delete-review" method="POST">
-            <button class="btn btn-sm btn-outline-dark">Delete review</button>
-          </form>
-        </li>
-        {{/if}}
-        {{/each}}
-      </ul>
-
-      {{#if isLoggedIn}}
-      <a href="/reviews/{{this.recipeId}}/create-review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
-      {{/if}} --}}
-
 
       <a href="/recipes" class="btn btn-sm btn-outline-dark">Go back to recipes list</a>
 

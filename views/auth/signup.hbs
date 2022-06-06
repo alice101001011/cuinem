@@ -1,61 +1,44 @@
-
-
-  <h1>Signup</h1>
+<h1>Signup</h1>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-  <form action="/auth/signup" method="post">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/auth/signup" method="post">
 
-    <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        id="username"
-        name="username"
-        placeholder="Please type your username"
-      />
+        <div class="form-floating mb-3">
+          <input required type="text" class="form-control" id="username" name="username"
+            placeholder="Please type your username" />
+          <label for="username" class="form-label">Username</label>
+          
+        </div>
+        <div class="form-floating mb-3">
+          <input required type="email" class="form-control" id="email" name="email"
+            placeholder="Please type your email" />
+          <label for="email" class="form-label">Email</label>
+          
+        </div>
+
+        <div class="form-floating mb-3">
+          <input required type="password" class="form-control" id="password" name="password"
+            placeholder="Please type a password" />
+          <label for="password" class="form-label">Password</label>
+          
+        </div>
+
+        <button type="submit" class="btn btn-sm btn-outline-dark">Sign up</button>
+
+        <a href="/" class="btn btn-sm btn-outline-dark">Go back</a>
+
+      </form>
+
+      <div>
+        <p>
+          {{#if errorMessage}}
+          {{errorMessage}}
+          {{/if}}
+        </p>
+      </div>
+
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input
-        required
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Please type your email"
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input
-        required
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Please type a password"
-      />
-    </div>
-
-    <button type="submit" class="btn btn-sm btn-outline-dark">Sign up</button>
-
-    <a href="/" class="btn btn-sm btn-outline-dark">Go back</a>
-
-  </form>
-
-  <div>
-    <p>
-      {{#if errorMessage}}
-        {{errorMessage}}
-      {{/if}}
-    </p>
   </div>
-
-</div>
-</div>
 </div>
 </div>
