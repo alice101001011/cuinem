@@ -13,6 +13,23 @@
 
       <p>Intro about me</p>
 
+              <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="imageUpload" class="form-label">Image Upload</label>
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
+                  <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                </div>
+              </form>
+
+
+
+
+
+
+
+
+
       {{!-- USERNAME EDITING --}}
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
@@ -28,20 +45,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-
-
-              <form action="/edit/username-update" method="POST">
+              <form action="/profile/edit/username-update" method="POST">
                 <div class="mb-3">
-                  <input required type="text" class="form-control" id="title" name="title" value="{{username}}"
+                  <input required type="text" class="form-control" id="username" name="username" value="{{username}}"
                     placeholder="Enter your new user name">
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </div>
-              </form>
-              <button type="submit" class="btn btn-dark">Submit</button>
-
-
-
-
+              </form>      
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -68,23 +78,17 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-
-
-              <form action="/profile/{{_id}}pwd-update" method="POST">
+              <form action="/profile/edit/pwd-update" method="POST">
                 <div class="mb-3">
-                  <input required type="text" class="form-control" id="title" name="title" value="{{password}}"
+                  <input required type="password" class="form-control" id="password" name="password" value="{{password}}"
                     placeholder="Enter your new password">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
               </form>
-
-
-
-
+              
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>    
             </div>
           </div>
         </div>
@@ -111,16 +115,13 @@
 
 
 
-              <form action="/profile/{{_id}}pic-update" method="POST">
+              <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                  <input required type="text" class="form-control" id="title" name="title" value="{{profilePic}}"
-                    placeholder="Choose a new profile picture">
+                  <label for="imageUpload" class="form-label">Image Upload</label>
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
-                <div class="mb-3">
-          <label for="imageUpload" class="form-label">Image Upload</label>
-          <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
-          <input type="text" name="existingImage" hidden value="{{user.profilePic}}" />
-        </div>
               </form>
 
 
@@ -129,7 +130,6 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
@@ -271,3 +271,10 @@
 
 {{!-- axios required script --}}
 <script src="/js/login-signup-pops.js"></script>
+<script>const urlParams = new URLSearchParams(window.location.search);
+  const msg = urlParams.get('msg') 
+  if(msg!=null){
+    alert(msg);
+    }
+    </script>
+    
