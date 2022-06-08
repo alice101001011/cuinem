@@ -31,67 +31,80 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const communityRecipeData = await Recipe.find();
+//     console.log(communityRecipeData);
+//     res.render("recipes/recipes-list-users", {
+//       communityRecipeData,
+//       pageTitle: "Community Recipes",
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 // Display search results for user recipes
 
 router.get("/search", async (req, res, next) => {
   try {
-    // const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
-
-    // const mealQ = "Breakfast";
-
-    // const dishType = [
-    //   "Alcohol-cocktail",
-    //   "Biscuits and cookies",
-    //   "Bread",
-    //   "Cereals",
-    //   "Condiments and sauces",
-    //   "Drinks",
-    //   "Desserts",
-    //   "Egg",
-    //   "Main course",
-    //   "Omelet",
-    //   "Pancake",
-    //   "Preps",
-    //   "Preserve",
-    //   "Salad",
-    //   "Sandwiches",
-    //   "Soup",
-    //   "Starter",
-    // ];
-
-    // const dishQ = "Bread";
-
-    // const cuisineType = [
-    //   "American",
-    //   "Asian",
-    //   "British",
-    //   "Caribbean",
-    //   "Central Europe",
-    //   "Chinese",
-    //   "Eastern Europe",
-    //   "French",
-    //   "Indian",
-    //   "Italian",
-    //   "Japanese",
-    //   "Kosher",
-    //   "Mediterranean",
-    //   "Mexican",
-    //   "Middle Eastern",
-    //   "Nordic",
-    //   "South American",
-    //   "South East Asian",
-    // ];
-    // const cuisineQ = "French";
+    
     console.log(req.query);
-    let query = req.query.q;
+    console.log(req.body);
+    
+    //     console.log(req.query);
+    const limit = 20;
+    const page = 1;
+    let searchTerm = req.query.q;
+    // const meal = req.query.mealType;
+    // const cuisine = req.query.cuisineType;
+    // const dish = req.query.dishType;
 
-    let recipes = await Recipe.find({
-      //label:{$regex: searchQuery}
-      $text: { $search: query },
-    });
+const {q, mealType, cuisineType, dishType} = req.query
+let query = {}
+
+    if (q != "") {
+      query.q = q
+    } else { delete query.q}
+
+    if (mealType != "") {
+      query.mealType = mealType
+    } else { delete query.mealType}
+
+    if (cuisineType != "") {
+      query.cuisineType = cuisineType
+    } else { delete query.cuisineType}
+
+    if (dishType != "") {
+      query.dishType = dishType
+    } else { delete query.dishType}
+
+console.log(query)
+
+
+const filters = {$and : [{label:{$regex: query.q}}, {$or: [
+  {"recipe.cuisineType": { $eq: query.cuisineType}},
+        {"recipe.mealType": { $eq: query.mealType }},
+        {"recipe.dishType": { $eq: query.dishType }}]}]
+}
+
+let recipes = await Recipe.find(filters)
+
+    // let recipes = await Recipe.find(
+    //   {
+    //     "recipe.cuisineType": { $eq: cuisine},
+    //     "recipe.mealType": { $eq: meal },
+    //     "recipe.dishType": { $eq: dish },
+    //   }
+
+    //   //label:{$regex: searchQuery}
+    //   // $text: { $search: query },
+    // );
+
+  
     //res.json(recipes)
     //console.log(recipes)
-
+    //console.log(recipes);
     res.render("recipes/search-results-users", {
       pageTitle: "Search Results",
       recipes,

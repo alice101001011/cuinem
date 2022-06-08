@@ -1,51 +1,60 @@
-<div class="px-4 text-center">
+<div class="container col-xxl-8 ">
+  <div class="row flex-lg-row align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6 overflow-hidden recipe-image-container">
+      <img src="{{recipe.recipe.imageUrl}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy">
+    </div>
+    <div class="col-lg-5">
+      <h1 class="display-3 fw-bold lh-1 mb-3">{{recipe.recipe.label}}</h1>
+      <p class="lead">{{recipe.recipe.description}}</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <p>Cuisine:</p>
+        <h6>{{recipe.recipe.cuisineType}}</h6>
+        <p>Meal type:</p>
+        <h6>{{recipe.recipe.mealType}}</h6>
+        <p>Dish type:</p>
+        <h6>{{recipe.recipe.dishType}}</h6>
+      </div>
+      {{#if isLoggedIn}}
+      <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
+        <button class="btn btn-sm btn-outline-dark"><i class="bi-heart-fill" style="font-size: 1rem; color: red;"></i>
+          Save to Cookbook</button>
+      </form>
+      {{/if}}
+    </div>
+  </div>
+</div>
 
-  <img src="{{recipe.recipe.imageUrl}}" alt="" />
-    {{!-- <h1 class="display-3 fw-bold">{{recipe.recipe.label}}</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">{{recipe.recipe.description}}</p>
-      {{!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-      </div> --}}
-    </div> --}}
+<div class="container">
+
+  <div class="container ">
+    <div class="row justify-content-center gap-5">
+      <div class="col-6 col-sm-3 ">
+        <h3>Ingredients</h3>
+        <ul class="list-group">
+
+          {{#each recipe.recipe.ingredients}}
+          <li class="list-group-item">{{this.quantity}} {{this.measure}} {{this.food}}</li>
+
+          {{/each}}
+        </ul>
+      </div>
+      <div class="col-6 col-sm-3">
+        <h3>Instructions</h3>
+        <p>{{recipe.recipe.instructions}}</p>
+      </div>
+    </div>
   </div>
 
 
 
-<h1 class="display-3 fw-bold"> {{recipe.recipe.label}}</h1>
 
-<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-9">
-      <h6>Cuisine type:</h6>
-      <p>{{recipe.recipe.cuisineType}}</p>
-      <h6>Meal type:</h6>
-      <p>{{recipe.recipe.mealType}}</p>
-      <h6>Dish type:</h6>
-      <p>{{recipe.recipe.dishType}}</p>
-      <h6>Description: </h6>
-      <p>{{recipe.recipe.description}}</p>
-      <h6>Instructions: </h6>
-      <p>{{recipe.recipe.instructions}}</p>
-      <h6>Ingredients: </h6>
-      {{!-- {{#each recipe.recipe.ingredientLines}}
-      <p>{{this}}</p>
-      {{/each}} --}}
-      <ul>
-        
-        {{#each recipe.recipe.ingredients}}
-        {{!-- <li>{{this.text}}</li> --}}
-        <li>{{this.quantity}} {{this.measure}} {{this.food}}</li>
-        
-        {{/each}}
-      </ul>
-      {{!-- <img src="{{recipe.recipe.imageUrl}}" alt="" /> --}}
-{{#if isLoggedIn}}
-      <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
-        <button class="btn btn-sm btn-outline-dark"><i class="bi-heart-fill" style="font-size: 1rem; color: red;"></i> Save to Cookbook</button>
-      </form>
-      {{/if}}
+
+
+
+
+
 
       <hr>
 
@@ -76,7 +85,7 @@
 
         </form> --}}
         {{!-- <a href="/recipes/{{recipe.id}}" class="btn btn-sm btn-outline-dark">Go back</a> --}}
-      {{!-- </div> --}}
+        {{!-- </div> --}}
       <a href="/reviews/{{recipe._id}}/review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
       {{/if}}
 
