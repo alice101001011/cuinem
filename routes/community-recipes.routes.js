@@ -48,53 +48,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/search", async (req, res, next) => {
   try {
-    // const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
-
-    // const mealQ = "Breakfast";
-
-    // const dishType = [
-    //   "Alcohol-cocktail",
-    //   "Biscuits and cookies",
-    //   "Bread",
-    //   "Cereals",
-    //   "Condiments and sauces",
-    //   "Drinks",
-    //   "Desserts",
-    //   "Egg",
-    //   "Main course",
-    //   "Omelet",
-    //   "Pancake",
-    //   "Preps",
-    //   "Preserve",
-    //   "Salad",
-    //   "Sandwiches",
-    //   "Soup",
-    //   "Starter",
-    // ];
-
-    // const dishQ = "Bread";
-
-    // const cuisineType = [
-    //   "American",
-    //   "Asian",
-    //   "British",
-    //   "Caribbean",
-    //   "Central Europe",
-    //   "Chinese",
-    //   "Eastern Europe",
-    //   "French",
-    //   "Indian",
-    //   "Italian",
-    //   "Japanese",
-    //   "Kosher",
-    //   "Mediterranean",
-    //   "Mexican",
-    //   "Middle Eastern",
-    //   "Nordic",
-    //   "South American",
-    //   "South East Asian",
-    // ];
-    // const cuisineQ = "French";
+    
     console.log(req.query);
     console.log(req.body);
     
@@ -138,7 +92,7 @@ let recipes = await Recipe.find(filters)
 
     // let recipes = await Recipe.find(
     //   {
-    //     "recipe.cuisineType": { $eq: cuisine, $gte:"" },
+    //     "recipe.cuisineType": { $eq: cuisine},
     //     "recipe.mealType": { $eq: meal },
     //     "recipe.dishType": { $eq: dish },
     //   }
@@ -147,9 +101,7 @@ let recipes = await Recipe.find(filters)
     //   // $text: { $search: query },
     // );
 
-    // let mealFilter = await Recipe.find({ "recipe.mealType": { $eq: meal } });
-
-    // let dishFilter = await Recipe.find({ "recipe.dishType": { $eq: dish } });
+  
     //res.json(recipes)
     //console.log(recipes)
     //console.log(recipes);
