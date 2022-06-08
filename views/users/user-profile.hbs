@@ -9,7 +9,7 @@
 
       <h2>Edit profile</h2>
 
-      <img src="" alt="{{this.username}} image">
+      <img src="{{user.profilePic}}" alt="{{user.username}} image">
 
       <p>Intro about me</p>
 
@@ -116,6 +116,11 @@
                   <input required type="text" class="form-control" id="title" name="title" value="{{profilePic}}"
                     placeholder="Choose a new profile picture">
                 </div>
+                <div class="mb-3">
+          <label for="imageUpload" class="form-label">Image Upload</label>
+          <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+          <input type="text" name="existingImage" hidden value="{{user.profilePic}}" />
+        </div>
               </form>
 
 

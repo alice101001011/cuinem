@@ -19,7 +19,10 @@ const userSchema = new Schema(
 
     pictureUrl: {
       type: String,
-    }
+
+      default: "https://res.cloudinary.com/alice-01/image/upload/v1654666838/test-project/profile-pic-placeholder-300x300px_biv5yf.png"
+    },
+
 
     favoriteRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
 

@@ -1,3 +1,18 @@
+<div class="px-4 text-center">
+
+  <img src="{{recipe.recipe.imageUrl}}" alt="" />
+    {{!-- <h1 class="display-3 fw-bold">{{recipe.recipe.label}}</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">{{recipe.recipe.description}}</p>
+      {{!-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+      </div> --}}
+    </div> --}}
+  </div>
+
+
+
 <h1 class="display-3 fw-bold"> {{recipe.recipe.label}}</h1>
 
 <div class="container">
@@ -25,11 +40,12 @@
         
         {{/each}}
       </ul>
-      <img src="{{recipe.recipe.imageUrl}}" alt="" />
-
+      {{!-- <img src="{{recipe.recipe.imageUrl}}" alt="" /> --}}
+{{#if isLoggedIn}}
       <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
         <button class="btn btn-sm btn-outline-dark"><i class="bi-heart-fill" style="font-size: 1rem; color: red;"></i> Save to Cookbook</button>
       </form>
+      {{/if}}
 
       <hr>
 
@@ -46,7 +62,7 @@
         {{/each}}
       </ul>
 
-      {{#unless isOwner}}
+      {{#if isLoggedIn}}
       {{!-- <div class="col-md-9"> --}}
         {{!-- <form action="/community-recipes/{{_id}}" method="POST">
 
@@ -62,7 +78,7 @@
         {{!-- <a href="/recipes/{{recipe.id}}" class="btn btn-sm btn-outline-dark">Go back</a> --}}
       {{!-- </div> --}}
       <a href="/reviews/{{recipe._id}}/review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
-      {{/unless}}
+      {{/if}}
 
 
       <a href="/community-recipes" class="btn btn-sm btn-outline-secondary">Go back to recipes list</a>
