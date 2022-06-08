@@ -1,6 +1,6 @@
 body {
   padding: 0px;
-  font: 14px "NotoSans", Helvetica, Arial, sans-serif;
+  font: 16px "NotoSans", sans-serif;
 }
 
 a {
@@ -17,7 +17,26 @@ h1 {
 }
 
 h2 {
+  font-family: "NotoSans", sans-serif;
+  font-weight: 600;
   padding-bottom: 3rem;
+
+
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.recipe-image-container {
+  width: 50%;
+  height: 400px;
+}
+
+.list-group {
+  border-radius: 0;
 }
 
 .card-grid {
