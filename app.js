@@ -15,7 +15,8 @@ const hbs = require("hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
 const app = express();
-
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
 const axios = require("axios")
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware

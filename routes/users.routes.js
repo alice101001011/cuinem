@@ -7,6 +7,7 @@ const Favorite = require("../models/Favorite.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const fileUploader = require("../config/cloudinary.config");
+const cloudinary = require('cloudinary');
 
 // Display user profile
 
@@ -112,7 +113,7 @@ router.post("/edit/username-update", async (req, res, next) => {
   try {
     const { username } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { username });
-    res.redirect("/profile");
+    res.redirect("/profile?msg=username updated");
   } catch (err) {
     next(err);
   }
@@ -120,9 +121,9 @@ router.post("/edit/username-update", async (req, res, next) => {
 
 router.post("/edit/pwd-update", async (req, res, next) => {
   try {
-    const { username } = req.body;
+    const { password } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { password });
-    res.redirect("/profile");
+    res.redirect("/profile?msg=password updated");
   } catch (err) {
     next(err);
   }
@@ -130,14 +131,11 @@ router.post("/edit/pwd-update", async (req, res, next) => {
 
 router.post("/edit/pic-update", async (req, res, next) => {
   try {
-    const { username } = req.body;
-    await User.findByIdAndUpdate(req.session.user._id, { username });
-    res.redirect("/profile");
-
-
-
-
-    
+    console.log(req.files);
+    const { newPic } = req.files.imageUpload.data;
+    cloudinary.v2.uploader.upload(newPic, function(error, result) {console.log(result, error);res.redirect("/profile");});
+    /* await User.findByIdAndUpdate(req.session.user._id, { username }); */
+     
   } catch (err) {
     next(err);
   }
