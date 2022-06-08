@@ -12,7 +12,7 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
-hbs.registerPartials(__dirname + "/views/partials");
+// hbs.registerPartials(__dirname + "/views/partials");
 
 const app = express();
 
@@ -27,7 +27,7 @@ const projectName = "cuinem";
 
 
 
-app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalized(projectName)}`;
 
 const exposeUser = require("./middleware/exposeUserToViews")
 

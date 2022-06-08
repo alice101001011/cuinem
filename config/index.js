@@ -28,6 +28,8 @@ const MongoStore = require("connect-mongo");
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI = require("../utils/consts");
 
+const hbs = require("hbs");
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -42,6 +44,7 @@ module.exports = (app) => {
   app.set("views", path.join(__dirname, "..", "views"));
   // Sets the view engine to handlebars
   app.set("view engine", "hbs");
+  hbs.registerPartials(path.join(__dirname, "..", "/views/partials"));
   // Handles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
 
@@ -60,8 +63,7 @@ module.exports = (app) => {
         maxAge: 1000 * 60 * 60 * 2,
       },
       store: MongoStore.create({
-        mongoUrl:
-          MONGO_URI || "mongodb://localhost/cuinem",
+        mongoUrl: "mongodb+srv://admin:sPzetBs7LeSphR9b@cluster0.lqaoyjl.mongodb.net/?retryWrites=true&w=majority" || "mongodb://localhost/cuinem",
         ttl: 60 * 60 * 24 * 7,
       }),
     })

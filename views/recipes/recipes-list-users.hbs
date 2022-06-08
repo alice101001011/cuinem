@@ -1,13 +1,13 @@
 <div class="bg-dark text-secondary px-4 py-5 text-center">
   <div class="py-5">
-    <h1 class="display-3 fw-bold text-white">Search recipes from the web</h1>
+    <h1 class="display-3 fw-bold text-white">Search our community recipes</h1>
     <div class="col-lg-6 mx-auto">
       {{!-- <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
         web, upload your own and create your own "cookbook" with your favorite recipes.</p> --}}
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center ">
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 
-        <form action="/recipes/search" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-group"
-          role="search">
+        <form action="/community-recipes/search" method="GET"
+          class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-group" role="search">
 
           <input type="text" name="q" class="form-control form-control-dark text-white bg-dark"
             placeholder="Search..." />
@@ -25,7 +25,10 @@
             <label class="form-check-label" for="mealType">Dinner</label>
           </div> --}}
 
+          
           <button type="submit" class="btn btn-outline-light btn-md px-4 button-addon2">SEARCH</button>
+
+
         </form>
 
       </div>
@@ -33,33 +36,35 @@
   </div>
 </div>
 
+
+
 <div class="container mt-5">
 
+
   <div class="rooms-body">
-    {{!-- {{#if newRecipeData.hits}} --}}
-    <div class="card-grid">
-      {{#each newRecipeData.hits}}
-      <div class="card">
-        <img src={{this.recipe.image}} class="card-img-top" alt={{this.recipe.label}} />
-        <div class="card-body">
-          <h5 class="card-title">{{this.recipe.label}}</h5>
+    {{!-- <form action="/recipes/search" method="GET">
+      <label>
+        Search
+        <input type="text" name="q" />
+      </label>
 
-          <a href="/recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View Recipe
-            Details Recipe ID</a>
-
-
-          {{!-- view recipe url on another tab --}}
-          {{!-- <a href="{{this.recipe.url}}" target="_blank" type="button"
-            class="btn btn-sm btn-outline-dark recipe-id">View recipe site</a> --}}
-          {{!-- view recipe url on another tab --}}
-
-        </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Breakfast" />
+        <label class="form-check-label" for="mealType">Breakfast</label>
       </div>
-      {{/each}}
-    </div>
-    {{!-- {{else}} --}}
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Lunch" />
+        <label class="form-check-label" for="mealType">Lunch</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="mealType" name="mealType" value="Dinner" />
+        <label class="form-check-label" for="mealType">Dinner</label>
+      </div>
 
-    {{!-- <div class="card-grid">
+      <button type="submit">SEARCH</button>
+    </form> --}}
+
+    <div class="card-grid">
       {{#each communityRecipeData}}
       <div class="card">
         {{#if this.recipe.imageUrl}}
@@ -75,11 +80,6 @@
       </div>
       {{/each}}
     </div>
-
-
-    {{/if}} --}}
-
-
-    <a href="{{newRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
+    <a href="{{communityRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
   </div>
 </div>

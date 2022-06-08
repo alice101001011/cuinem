@@ -1,97 +1,94 @@
 const { Schema, model } = require("mongoose");
 
-// const recipeSchema = new Schema({
-
-//     name: { type: String },
-//     description: { type: String },
-//     imageUrl: { type: String },
-//     owner: { type: Schema.Types.ObjectId, ref: User },
-// created: {
-//   type: Date,
-//   default: new Date()},
-//     reviews: [{ type: Schema.Types.ObjectId, ref: Review }]
-// });
-
 const recipeSchema = new Schema({
-  // from: 0,
-  // to: 0,
-  // count: 0,
-  // _links: {
-  //   self: {
-  //     href: String,
-  //     title: String,
-  //   },
-  //   next: {
-  //     href: String,
-  //     title: String,
-  //   },
-  // },
-  // hits: [
-  //   {
-  //     recipe: {
-    
-        uri: String,
-        label: String,
-        description: {type: String, max: 500},
-        image: String,
-        images: {
-          THUMBNAIL: {
-            url: String,
-            width: 0,
-            height: 0,
-          },
-          SMALL: {
-            url: String,
-            width: 0,
-            height: 0,
-          },
-          REGULAR: {
-            url: String,
-            width: 0,
-            height: 0,
-          },
-          LARGE: {
-            url: String,
-            width: 0,
-            height: 0,
-          },
-        },
-        source: String,
-        url: String,
-        // shareAs: String,
-        // yield: 0,
-        ingredientLines: [String],
-        ingredients: [
-          {
-            text: String,
-            quantity: 0,
-            measure: String,
-            food: String,
-            weight: 0,
-            foodId: String,
-          },
-        ],
-        // calories: 0,
-        // totalWeight: 0,
-        cuisineType: [String],
-        mealType: [String],
-        dishType: [String],
-        owner: { type: Schema.Types.ObjectId, ref: "User" },
-  reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }]
-      // },
-      // _links: {
-      //   self: {
-      //     href: String,
-      //     title: String,
-      //   },
-      //   next: {
-      //     href: String,
-      //     title: String,
-      //   },
-      // },
-  //   },
-  // ],
+  recipe: {
+    uri: String,
+    label: String,
+    description: { type: String, max: 500 },
+    instructions: { type: String, max: 1000 },
+    imageUrl: String,
+    image: String,
+    source: String,
+    url: String,
+    ingredientLines: [String],
+    ingredients: [
+
+      {
+        text: String,
+        quantity: 0,
+        measure: String,
+        food: String,
+        weight: 0,
+        foodId: String,
+      },
+    ],
+    cuisineType: {
+      type: String,
+      enum: [
+        "",
+        "American",
+        "Asian",
+        "British",
+        "Caribbean",
+        "Central Europe",
+        "Chinese",
+        "Eastern Europe",
+        "French",
+        "Indian",
+        "Italian",
+        "Japanese",
+        "Kosher",
+        "Mediterranean",
+        "Mexican",
+        "Middle Eastern",
+        "Nordic",
+        "South American",
+        "South East Asian",
+      ],
+      default: "",
+    },
+    mealType: {
+      type: String,
+      enum: ["", "Breakfast", "Lunch", "Dinner", "Snack", "Teatime"],
+      default: "",
+    },
+    dishType: {
+      type: String,
+      enum: [
+        "",
+        "Alcohol-cocktail",
+        "Biscuits and cookies",
+        "Bread",
+        "Cereals",
+        "Condiments and sauces",
+        "Drinks",
+        "Desserts",
+        "Egg",
+        "Main course",
+        "Omelet",
+        "Pancake",
+        "Preps",
+        "Preserve",
+        "Salad",
+        "Sandwiches",
+        "Soup",
+        "Starter",
+      ],
+      default: "",
+    },
+  },
+  owner: { type: Schema.Types.ObjectId, ref: "User" },
+  reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+  //favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
+  favorited: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  recipeId: String,
+  created: {
+    type: Date,
+    default: new Date(),
+  },
 });
+
+recipeSchema.index({ "$**": "text" });
 
 const Recipe = model("Recipe", recipeSchema);
 

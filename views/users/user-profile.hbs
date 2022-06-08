@@ -1,40 +1,268 @@
 <div class="container">
 
-  <h1>Welcome back, {{username}}! This is your user profile</h2>
-  <div>
-      <h2>Create a new recipe</h2>
-      <p>Click the button and create a new recipe</p>
-  <a href="/recipes/create" type="button" class="btn btn-sm btn-outline-dark">Create new recipe</a>
+  <h1>Welcome back, {{user.username}}! This is your user profile</h2>
 
-</div>
 
-<hr>
+    <hr>
 
-<h2>Your recipes</h2>
+    <div class="profile-container">
 
-  <div class="recipe-body">
-    <div class="card-grid">
+      <h2>Edit profile</h2>
 
-        {{#each recipes}}
-          <div class="card">
-            <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} />
-            <div class="card-body">
-              <h5 class="card-title">{{this.label}}</h5>
-              <p class="card-text"> {{this.description}}</p>
+      <img src="" alt="{{this.username}} image">
+
+      <p>Intro about me</p>
+
+      {{!-- USERNAME EDITING --}}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
+        Edit your user name
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit your user name</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="card-links">
-              <div>
-               <a href="/recipe/{{this.id}}/edit" type="button" class="btn btn-sm btn-outline-dark">Edit room</a>
-              </div>
-              <div>
-                <form action="/recipe/{{this.id}}/delete" method="POST">
-                  <button class="btn btn-sm btn-outline-dark">Delete recipe</button>
-                </form>
-              </div>
+            <div class="modal-body">
+
+
+
+              <form action="/edit/username-update" method="POST">
+                <div class="mb-3">
+                  <input required type="text" class="form-control" id="title" name="title" value="{{username}}"
+                    placeholder="Enter your new user name">
+                </div>
+              </form>
+              <button type="submit" class="btn btn-dark">Submit</button>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
-        {{/each}}
-    
+        </div>
+      </div>
+      {{!-- USERNAME EDITING --}}
+
+
+
+      {{!-- PWD EDITING --}}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
+        Edit your password
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit your password</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+              <form action="/profile/{{_id}}pwd-update" method="POST">
+                <div class="mb-3">
+                  <input required type="text" class="form-control" id="title" name="title" value="{{password}}"
+                    placeholder="Enter your new password">
+                </div>
+              </form>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- PWD EDITING --}}
+
+
+
+      {{!-- PIC EDITING --}}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
+        Change your profile picture
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change your profile picture</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+              <form action="/profile/{{_id}}pic-update" method="POST">
+                <div class="mb-3">
+                  <input required type="text" class="form-control" id="title" name="title" value="{{profilePic}}"
+                    placeholder="Choose a new profile picture">
+                </div>
+              </form>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> {{!-- class"profile-container" --}}
+
+    <hr>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">What do you want to do today?</h2>
+
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+            style="background-image: url('unsplash-photo-1.jpg');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-cookbook">Go to my Cookbook</a>
+              </h2>
+              <ul class="d-flex list-unstyled mt-auto">
+                {{!-- <li class="me-auto">
+                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                    class="rounded-circle border border-white">
+                </li> --}}
+                {{!-- <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                  <small>Earth</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                  <small>3d</small>
+                </li> --}}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+            style="background-image: url('unsplash-photo-2.jpg');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-recipes">Go to my Recipes</a></h2>
+              {{!-- <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                    class="rounded-circle border border-white">
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                  <small>Pakistan</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                  <small>4d</small>
+                </li>
+              </ul> --}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+            style="background-image: url('unsplash-photo-3.jpg');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/community-recipes/create-recipe">Create a new
+                  Recipe</a></h2>
+              {{!-- <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                    class="rounded-circle border border-white">
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                  <small>California</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                  <small>5d</small>
+                </li>
+              </ul> --}}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+
+
+
+    <hr>
+    <h2>Your reviews</h2>
+
+    <div class="recipe-body">
+      <div class="card-grid">
+
+        {{#each reviews}}
+        <div class="card">
+          {{!-- <img src={{this.imageUrl}} class="card-img-top" alt={{this.label}} /> --}}
+          <div class="card-body">
+            <h5 class="card-title">{{this.recipeName}}</h5>
+            <p class="card-text"> {{this.comment}}</p>
+          </div>
+          <div class="card-links">
+
+
+
+            <div>
+              <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View
+                recipe</a>
+            </div>
+            <div>
+              <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit
+                review</a>
+            </div>
+            <div>
+              <form action="/reviews/{{this.id}}/delete-review" method="POST">
+                <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
+    </div>
 </div>
+
+{{!-- axios required script --}}
+<script src="/js/login-signup-pops.js"></script>

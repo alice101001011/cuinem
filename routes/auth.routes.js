@@ -16,10 +16,6 @@ router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-
-
-
-
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, email, password } = req.body;
 
@@ -51,37 +47,37 @@ router.post("/signup", isLoggedOut, (req, res) => {
           .status(400)
           .render("auth/signup", { errorMessage: "Username already in use." });
       }
-      
-    return bcrypt
-      .genSalt(saltRounds)
-      .then((salt) => bcrypt.hash(password, salt))
-      .then((hashedPassword) => {
-        return User.create({
-          email,
-          password: hashedPassword,
-          username,
-        });
-      })
-      .then((user) => {
-        req.session.user = user;
-        res.redirect("/");
-      })
-      .catch((error) => {
-        if (error instanceof mongoose.Error.ValidationError) {
-          return res
-            .status(400)
-            .render("auth/signup", { errorMessage: error.message });
-        }
-        if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
-            errorMessage:
-              "Email needs to be unique. The email you chose is already in use.",
+
+      return bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(password, salt))
+        .then((hashedPassword) => {
+          return User.create({
+            email,
+            password: hashedPassword,
+            username,
           });
-        }
-        return res
-          .status(500)
-          .render("auth/signup", { errorMessage: error.message });
-      });
+        })
+        .then((user) => {
+          req.session.user = user;
+          res.redirect("/");
+        })
+        .catch((error) => {
+          if (error instanceof mongoose.Error.ValidationError) {
+            return res
+              .status(400)
+              .render("auth/signup", { errorMessage: error.message });
+          }
+          if (error.code === 11000) {
+            return res.status(400).render("auth/signup", {
+              errorMessage:
+                "Email needs to be unique. The email you chose is already in use.",
+            });
+          }
+          return res
+            .status(500)
+            .render("auth/signup", { errorMessage: error.message });
+        });
     });
   });
 });
@@ -136,17 +132,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 // Logout (only for logged in user)
-
-// router.get("/logout", isLoggedIn, (req, res) => {
-//   req.session.destroy((err) => {
-//     if (err) {
-//       return res
-//         .status(500)
-//         .render("auth/logout", { errorMessage: err.message });
-//     }
-//     res.redirect("/");
-//   });
-// });
 
 router.post("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {

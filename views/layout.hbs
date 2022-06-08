@@ -1,69 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-    />
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-   <body>
-<nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">CUINEM – we cook!</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+<body>
+
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="/">CUINEM – we cook!</use>
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/recipes" class="nav-link px-2 text-secondary">Web Recipes</a></li>
+          <li><a href="/community-recipes" class="nav-link px-2 text-white">Community Recipes</a></li>
+        </ul>
+
+        {{!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Search..."
+            aria-label="Search">
+        </form> --}}
+
+        {{#if isLoggedIn}}
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+
+
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile/my-cookbook">My Cookbook</a></li>
+            <li><a class="dropdown-item" href="/profile/my-recipes">My Recipes</a></li>
+            <li><a class="dropdown-item" href="/community-recipes/create-recipe">Create Recipe</a></li>
+            <li>
+              <hr class="dropdown-divider">
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/recipes">Recipes</a>
+            <li>
+              <form id="logout-form" action="/auth/logout" method="POST">
+                <button class="btn btn-sm btn-outline-dark dropdown-item">Logout</button>
+              </form>
             </li>
-
-            {{#if isLoggedIn}}
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">User Profile</a>
-              </li>
-
-              <li class="nav-item">
-                <form id="logout-form" action="/auth/logout" method="POST">
-                  <button class="btn btn-sm btn-outline-dark">Logout</button>
-                </form>
-              </li>
-
-            {{else}}
-              <li class="nav-item ">
-                <a class="nav-link" href="/auth/signup">Signup</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/auth/login">Login</a>
-              </li>
-            {{/if}}
-
           </ul>
         </div>
+        {{else}}
+
+        <div class="text-end">
+          <a class="btn btn-outline-light" href="/auth/login">Login</a>
+          <a class="btn btn-outline-light" href="/auth/signup">Signup</a>
+        </div>
+
+        {{/if}}
+
       </div>
-    </nav>
+    </div>
+  </header>
 
-      {{{body}}}
 
-      <script src="/js/script.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script></body>
+  <main>
+    {{{body}}}
+  </main>
+
+
+  <footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2022 Laia & Alice</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#twitter"></use>
+          </svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#instagram"></use>
+          </svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+            <use xlink:href="#facebook"></use>
+          </svg></a></li>
+    </ul>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/create-recipe.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>

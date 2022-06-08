@@ -1,58 +1,22 @@
-<h1>Edit recipe</h1>
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-9">
-      <form action="/community-recipes/{{_id}}/edit" method="POST" enctype="multipart/form-data">
-
-        <div class="form-floating mb-3">
-          <input required type="text" class="form-control" id="label" name="label" placeholder="Recipe Name"
-            value="{{recipe.label}}" />
-          <label for="label" class="form-label">Recipe Name</label>
-
-        </div>
-
-        <div class="form-floating mb-3">
-          <textarea type="text" class="form-control" id="description" name="description" placeholder="Description"
-            value="{{recipe.description}}"></textarea>
-          <label for="description" class="form-label">Description</label>
-
-        </div>
-
-        <div class="form-floating mb-3">
-
-          <textarea type="text" class="form-control" id="instructions" name="instructions" placeholder="Instructions"
-            value="{{recipe.instructions}}"></textarea>
-          <label for="instructions" class="form-label">Instructions</label>
-        </div>
-
-        <div class="mb-3">
-          <label for="ingredientLines" class="form-label">Ingredients</label>
-          <div class="ingredient-lines">
-            {{#each recipe.ingredientLines}}
-            <div class="single-ingredient"><input type="text" class="form-control" id="ingredientLines"
-                name="ingredientLines" value="{{this}}"/></div>
-                {{/each}}
-                <div class="single-ingredient"><input type="text" class="form-control" id="ingredientLines"
-                name="ingredientLines"/></div>
-          </div>
-          
-          <button type="button" class="btn btn-sm btn-outline-dark add-ingredient" id="add-ingredientline-button">Add ingredient line</button>
-        </div>
-
-        {{!-- <div class="mb-3">
-          <label for="ingredients" class="form-label">Ingredients</label>
-          <div class="ingredient-ul">
-            <div class="ingredient-li"><input type="text" class="form-control single-ingredient" name="text" /></div>
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-8 fw-bold text-white">Community Recipes Search Results for {{q}}</h1>
+    {{!-- <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
+        web, upload your own and create your own "cookbook" with your favorite recipes.</p>
+    </div> --}}
+  </div>
+</div>
 
 
-          </div>
 
-          <button type="button" class="btn btn-sm btn-outline-dark" id="add-ingredient-button">Add ingredient
-            line</button>
-        </div> --}}
+<div class="container mt-5">
 
-        <div class="input-group input-group-sm mb-3">
+  <div class="rooms-body">
+
+              <div>
+
+          <div class="input-group input-group-sm mb-3">
           <label class="input-group-text" for="cuisineType">Cuisine type:</label>
 
           <select class="form-select form-control" name="cuisineType" id="cuisineType">
@@ -117,20 +81,20 @@
           </select>
         </div>
 
-        <div class="mb-3">
-          <label for="imageUpload" class="form-label">Image Upload</label>
-          <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
-          <input type="text" name="existingImage" hidden value="{{imageUrl}}" />
+</div>
+    <div class="card-grid">
+      {{#each recipes}}
+      <div class="card">
+        {{#if this.recipe.imageUrl}}
+        <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
+        {{/if}}
+        <div class="card-body">
+          <h5 class="card-title">{{this.recipe.label}}</h5>
+          <a {{!-- href="/recipes/{{this.recipe.uri}}" --}} href="{{this._id}}" type="button"
+            class="btn btn-sm btn-outline-dark">View Recipe Details</a>
         </div>
-
-
-        <button type="submit" type="button" class="btn btn-md btn-outline-dark">Save changes</button>
-
-      </form>
-      <a href='/profile/my-recipes' class="btn btn-sm btn-outline-secondary">
-        Go back to my recipes
-      </a>
+      </div>
+      {{/each}}
     </div>
   </div>
-</div>
 </div>

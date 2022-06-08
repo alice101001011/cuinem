@@ -1,2 +1,41 @@
-<h1>Cuinem – we cook</h1>
-<p>Welcome {{username}}</p>
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+        <h1 class="display-1 fw-bold text-white">Cuinem – we cook!</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
+                web, upload your own and create your own "cookbook" with your favorite recipes.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/recipes" type="button" class="btn btn-outline-primary btn-lg px-4 me-sm-3 fw-bold">Search for
+                    recipes on the web</a>
+                <a href="/community-recipes" type="button" class="btn btn-outline-light btn-lg px-4">Search our
+                    community recipes</a>
+            </div>
+        </div>
+    </div>    
+
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="public/images/teste-delete/cook.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+</div>

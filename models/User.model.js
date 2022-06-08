@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
-  {  
+  {
     email: {
       type: String,
       required: true,
@@ -16,9 +16,13 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+
     pictureUrl: {
       type: String,
     }
+
+    favoriteRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
+
   },
   {
     timestamps: true,
