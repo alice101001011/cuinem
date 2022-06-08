@@ -16,10 +16,13 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    profilePic: {
+
+    pictureUrl: {
       type: String,
-    },
+    }
+
     favoriteRecipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
+
   },
   {
     timestamps: true,
