@@ -6,6 +6,7 @@ const Review = require("../models/Review.model");
 const Favorite = require("../models/Favorite.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
+const fileUploader = require("../config/cloudinary.config");
 
 // Display user profile
 
@@ -86,12 +87,20 @@ router.get("/profile-edit", isLoggedIn, async (req, res) => {
   }
 });
 
-router.post("/edit-profile", async (req, res, next) => {
+router.post("/edit-profile", fileUploader.single("imageUpload"), async (req, res, next) => {
   try {
-    const { username, email } = req.body;
+    const { username, email, existingImage } = req.body;
+
+    if (req.file) {
+      profilePic = req.file.path;
+    } else {
+      profilePic = existingImage;
+    }
+
     await User.findByIdAndUpdate({
       username,
       email,
+      profilePic,
       owner: req.session.user._id,
     });
   } catch (err) {
@@ -124,6 +133,11 @@ router.post("/edit/pic-update", async (req, res, next) => {
     const { username } = req.body;
     await User.findByIdAndUpdate(req.session.user._id, { username });
     res.redirect("/profile");
+
+
+
+
+    
   } catch (err) {
     next(err);
   }
