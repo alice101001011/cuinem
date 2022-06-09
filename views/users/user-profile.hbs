@@ -11,19 +11,18 @@
 
       <img src="{{user.profilePic}}" alt="{{user.username}} image">
 
-      <p>Intro about me</p>
-
-              <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
+              {{!-- <form action="/profile" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
                   {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                  {{!-- <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
-              </form>
+              </form> --}}
+<div><p>About me</p>
+<p>{{user.about}}</p></div>
 
-
-
+<a href="/profile/edit-profile" class="btn btn-sm btn-outline-dark">Edit your profile</a>
 
 
 
@@ -32,12 +31,12 @@
 
       {{!-- USERNAME EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
         Edit your user name
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -58,19 +57,19 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       {{!-- USERNAME EDITING --}}
 
 
 
       {{!-- PWD EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
         Edit your password
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -92,19 +91,19 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       {{!-- PWD EDITING --}}
 
 
 
       {{!-- PIC EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
         Change your profile picture
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -118,22 +117,22 @@
               <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
                   {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                  {{!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
-              </form>
+              </form> --}}
 
 
 
 
-            </div>
+            {{!-- </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
     </div> {{!-- class"profile-container" --}}
 

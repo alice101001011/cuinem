@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="recipe-body">
+    <div class="recipe-body" id="favorite-recipes">
         <div class="card-grid">
 
             {{#each favorites}}
@@ -21,9 +21,9 @@
                     </div>
 
                     <div>
-                        <form action="/community-recipes/{{this.id}}/remove-favorite" method="POST">
-                            <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove</button>
-                        </form>
+                        {{!-- <form action="/community-recipes/{{this._id}}/remove-favorite" method="POST"> --}}
+                            <button type= "sumbit" class="btn btn-sm btn-outline-dark remove-favorite-button"><i class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove<span hidden>{{this._id}}</span></button>
+                        {{!-- </form> --}}
                     </div>
                 </div>
             </div>
@@ -32,3 +32,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/remove-favorite.js"></script>
