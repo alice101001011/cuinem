@@ -14,7 +14,7 @@ const recipesIntro = [
         Place on a baking sheet with the Parmesan seasoning side up.\
         Bake in a preheated oven until golden brown, about 10-15 minutes.\
          Serve immediately so the cheese is nice and melting.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756391/test-project/italian-cheese-bombs_vkcqby.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -52,7 +52,7 @@ const recipesIntro = [
         Pull edges of each piece of dough up and around the macaroni-and-cheese mixture to enclose completely, pinching seams to seal. Place seam-side down in a pie plate.\
         Brush tops of dough with butter. Sprinkle evenly with parsley flakes and garlic powder.\
         Bake 15 to 20 minutes or until the top is golden brown. Serve hot and plain with the ranch dressing, if desired.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756371/test-project/bacon-mac-and-cheese-bombs_px1ghq.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -96,7 +96,7 @@ const recipesIntro = [
         Fry, turning once or twice, for about 1 to 2 minutes or until golden-brown and crisp.\
         Remove from the skillet and drain on a wire rack set over a baking sheet. \
         Serve hot and plain with the sweet and sour sauce, if desired, or with other side dishes.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756386/test-project/lumpiang-keso_nm37zc.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -136,7 +136,7 @@ const recipesIntro = [
          then mix together using two large spoons and slightly turning the popcorn, pretzels and red hots over one another, \
          until all of the mix is mostly covered.\
         Once chocolate has cooled and hardened, add in eyeballs and serve.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756391/test-project/rudolph-popcorn_x3kfdf.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -170,7 +170,7 @@ const recipesIntro = [
         On an open tortilla, spread ¼ cup grated cheese, sliced avocado, and 2 tablespoons of salsa.\
         Broil under a broiler for three minutes.\
         Fold in half, and slice in wedges before serving", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756371/test-project/avocado-quesadillas_doiucn.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -207,7 +207,7 @@ const recipesIntro = [
         Add the carrots, onions, red pepper, and peanuts; cook 1 to 2 minutes.\
         Add rice and peanut sauce; heat thoroughly. Transfer the cooked beef to the large bowl.\
         Serve warm and plain, over rice, or with other main dishes. Sprinkle with the remaining cilantro, if desired.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756378/test-project/bangkok-beef_n7qobu.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -256,7 +256,7 @@ const recipesIntro = [
         Cover with tomato sauce, spread corned beef mixture over tomato sauce, and sprinkle mozzarella mix. Top with lasagna sheets.\
         Repeat with remaining lasagna sheets, tomato sauce, and end with mozzarella mix until baking dish is full.\
         Place in an oven and bake for 40 minutes, or until noodles are softened. Slice and serve hot and plain.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756380/test-project/corned-beef-lasagna_ehijcc.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -296,7 +296,7 @@ const recipesIntro = [
         Reduce heat to low; cover and simmer 20 minutes, or until rice and potatoes are tender. \
         During the last 5 minutes of cooking, just mix with chickpeas. \
         Serve hot and plain but pair this turmeric-based rice dish with other main dishes.", // how to make the reicpe
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756390/test-project/yellow-rice-chickpeas_q2vt0x.webp",
     
         ingredients: [
     // every single ingredient goes in a single object, like here below
@@ -331,7 +331,7 @@ const recipesIntro = [
         Reduce heat and simmer 1 ½ to 2 hours. Remove and cool to room temperature.\
         Dip or brush with barbecue sauce.\
         Place ribs in a 400° F oven for 15 to 20 minutes. Serve hot and plain with rice.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756386/test-project/hickory-smoked-barbecue-ribs_cpxgcd.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 5, measure: "pound", food: "pork ribs",},
@@ -360,7 +360,7 @@ const recipesIntro = [
         Combine soy sauce, coffee, bay leaves, garlic, oregano and half of the sliced onions to make the sauce.\
         Put remaining onions on the meat, and pour the sauce over it.\
         Cover and roast 4 - 5 hours at 325° F.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756385/test-project/amish-pot-roast_ctmqfn.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 4, measure: "pound", food: "beef roast",},
@@ -393,7 +393,7 @@ const recipesIntro = [
         Cook, stirring, in a double boiler until it resembles soft scrambled eggs.\
         Pour into a small casserole dish.\
         Bake at 350° F for 30 minutes, then brown under the broiler.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756391/test-project/thai-coconut-custard_udej4d.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 1, measure: "cup", food: "coconut milk",},
@@ -425,7 +425,7 @@ const recipesIntro = [
         Do not over beat.\
         Butter 2 loaf pans and divide batter between them.\
         Bake at 350 degrees for 40-50 minute.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756388/test-project/tamaya-blue-cake_obvio9.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 1, measure: "cup", food: "melted butter",},
@@ -461,7 +461,7 @@ const recipesIntro = [
         Cook over medium-low heat just until mixture starts to bubble at edges. \
         Cook, whisking, until slightly thickened, about one minute. Cool.\
         Freeze as directed below. Spoon into serving dishes, garnish with mint and whipped cream if desired, and serve immediately. ", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756378/test-project/chocolate-granita_twepzn.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 4, measure: "cup", food: "water",},
@@ -490,7 +490,7 @@ const recipesIntro = [
         instructions: "    Fill popsicle molds more than halfway with seedless grapes.\
         Add orange or grape juice, filling molds almost to the top.\
         Freeze until hard. Sell per piece, if desired. Serve cold and plain or with other fruits or desserts.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756380/test-project/frozen-grape-pops_bydqqq.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 12, measure: "units", food: "seedless grapes",},
@@ -521,7 +521,7 @@ const recipesIntro = [
         Combine flour and sugar; mix up beaten eggs, lemon juice and rind. Pour onto the slightly cooled crust.\
         Bake at 350° F for 25 minutes or until the filling is set.\
         Cool and sprinkle with powdered sugar. Serve cold and plain or with other desserts.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756382/test-project/lemon-bar-cookies_lkwcob.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 1, measure: "cup", food: "soft butter",},
@@ -555,7 +555,7 @@ const recipesIntro = [
         Add garlic and stir-fry for 1 minute then add shrimp and stir-fry for another minute.\
         Add shredded carrot and stir-fry for 2–3 minutes or until shrimp is pink and cooked through.\
         Stir in cilantro, add salt and pepper to taste then serve over cooked noodles.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756374/test-project/asian-garlic-shrimp_h8diw6.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 1, measure: "tbsp", food: "vegetable oil",},
@@ -592,7 +592,7 @@ const recipesIntro = [
         Just check when it gets too dry and keep stirring. Add ¼ cup water if it dries up to prevent burning.\
         Cook until string beans are tender but still crisp. \
         Serve with hot, steamed, plain white or jasmine rice, as well as with any main dish or side dish.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756380/test-project/ginisang-sitaw_lkwnky.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 2, measure: "tbsp", food: "vegetable oil",},
@@ -631,7 +631,7 @@ const recipesIntro = [
         At this point the oil should be hot enough to fry your meat and make it schnitzel. \
         To make sure it is, drop some bread crumbs in there and see if it starts sizzling.\
         Do not wait any further, put your meat inside the oil. Cook it for 2-3 minutes on each side.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756373/test-project/basic-schnitzel_rgpgyh.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 4, measure: "units", food: "cutlet",},
@@ -666,7 +666,7 @@ const recipesIntro = [
         Reduce to a simmer. Cover and cook until stock has been absorbed into rice.\
         Average cooking time is 60 minutes. Let stand for 10 minutes and fluff with a fork. \
         Serve hot and plain but pair this curry-based rice dish with other main dishes in a large plate.", // how to make the reicpe
-        imageUrl: "...",    
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756378/test-project/brown-rice-curry_ftviud.webp",    
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 1, measure: "cup", food: "brown rice uncooked",},
@@ -703,7 +703,7 @@ const recipesIntro = [
         The béchamel should not thicken too much, add more milk if needed. \
         Add salt. Place the spinach in an oven dish, place the chicken on top, cover it with the béchamel and lastly sprinkle it with grated cheese.\
         Place them in the oven to gratin.",
-        imageUrl: "...",
+        imageUrl: "https://res.cloudinary.com/alice-01/image/upload/v1654756386/test-project/chicken-spinach_wglo3k.webp",
         ingredients: [
     // every single ingredient goes in a single object, like here below
             { quantity: 4, measure: "units", food: "boneless chicken legs",},
