@@ -37,8 +37,10 @@ module.exports = (app) => {
 
   // To have access to `body` property in the request
   app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser());
+  // const bodyParser = require('body-parser');
+  // app.use(bodyParser.urlencoded({ extended: true }));
 
   // Normalizes the path to the views folder
   app.set("views", path.join(__dirname, "..", "views"));

@@ -1,16 +1,70 @@
 <div class="container">
 
+  <h1>WHey, {{user.username}}, seems like you want to edit your profile</h2>
+
+
+    <hr>
+
+    <div class="profile-container">
+
+      <h2>Edit profile</h2>
+
+      <img src="{{user.profilePic}}" alt="{{user.username}} image">
+
+      <p>Intro about me</p>
+
+      <form action="/profile/edit-profile" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="imageUpload" class="form-label">Change Profile Picture</label>
+          <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+
+          <label for="username" class="form-label">Change Username</label>
+          <input type="text" class="form-control-file" id="username" name="username" value="{{user.username}}"/>
+
+          <label for="password" class="form-label">Change Username</label>
+          <input type="text" class="form-control-file" id="password" name="password" value="{{user.password}}"/>
+          {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
+          <button type="submit" class="btn btn-secondary" >Submit</button>
+        </div>
+      </form>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <div class="container"> --}}
+
   {{!-- profile picture --}}
 
 
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
-  </button>
+  </button> --}}
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -26,17 +80,17 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
-  </button>
+  </button> --}}
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -55,4 +109,4 @@
   </div>
 
 
-</div>
+</div> --}}

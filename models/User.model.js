@@ -17,6 +17,8 @@ const userSchema = new Schema(
       unique: true,
     },
 
+    about: { type: String, max: 1000 },
+
     profilePic: {
       type: String,
 

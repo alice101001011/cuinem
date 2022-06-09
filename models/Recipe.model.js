@@ -80,7 +80,6 @@ const recipeSchema = new Schema({
   },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-  //favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
   favorited: [{ type: Schema.Types.ObjectId, ref: "User" }],
   recipeId: String,
   created: {
