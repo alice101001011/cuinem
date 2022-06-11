@@ -1,4 +1,4 @@
-<h1>My Recipes</h1>
+<h1 class="mt-10">My Recipes</h1>
 
 <div class="container">
 
@@ -15,18 +15,38 @@
                     <p class="card-text"> {{this.recipe.description}}</p>
                 </div>
                 <div class="card-links">
-                    <div>
-                        <a href="/community-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/community-recipes/{{this._id}}" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                            <a href="/community-recipes/{{this._id}}/edit" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-pencil-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                            <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
+                                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
+                                    hidden>{{this._id}}</span></button>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    {{!-- <div>
+                        <a href="/community-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark"><i
+                                class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
                     </div>
                     <div>
                         <a href="/community-recipes/{{this._id}}/edit" type="button"
-                            class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                            class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill"
+                                style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
                     </div>
                     <div>
                         {{!-- <form action="/community-recipes/{{this._id}}/delete" method="POST"> --}}
-                            <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span hidden>{{this._id}}</span></button>
-                        {{!-- </form> --}}
-                    </div>
+                            {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
+                                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
+                                    hidden>{{this._id}}</span></button> --}}
+                            {{!-- </form> --}}
+                        {{!-- </div> --}}
                 </div>
             </div>
             {{/each}}

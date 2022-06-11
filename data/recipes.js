@@ -274,7 +274,7 @@ const recipesIntro = [
         ],
         cuisineType: "Italian",
         mealType: "Lunch",
-        dishType: "Main Course",
+        dishType: "Main course",
       },
       //owner: { type: Schema.Types.ObjectId, ref: "User" },
       //reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],

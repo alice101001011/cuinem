@@ -26,7 +26,7 @@ const recipeSchema = new Schema({
     cuisineType: {
       type: String,
       enum: [
-        undefined,
+        "",
         'American',
         "Asian",
         "British",
@@ -46,7 +46,7 @@ const recipeSchema = new Schema({
         "South American",
         "South East Asian",
       ],
-      default: undefined,
+      default: "",
     },
     mealType: {
       type: String,

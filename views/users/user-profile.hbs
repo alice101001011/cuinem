@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-10">
 
   <h1>Welcome back, {{user.username}}! This is your user profile</h2>
 
@@ -7,7 +7,7 @@
 
     <div class="profile-container">
 
-      <h2>Edit profile</h2>
+      {{!-- <h2>Edit profile</h2> --}}
 
       <img src="{{user.profilePic}}" alt="{{user.username}} image">
 
@@ -244,22 +244,28 @@
             <p class="card-text"> {{this.comment}}</p>
           </div>
           <div class="card-links">
-
-
-
-            <div>
-              <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View
-                recipe</a>
-            </div>
-            <div>
-              <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit
-                review</a>
-            </div>
-            <div>
-              <form action="/reviews/{{this.id}}/delete-review" method="POST">
-                <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
+<div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/community-recipes/{{this.recipeId}}" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                            <a href="/reviews/{{this.id}}/edit-review" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-pencil-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                            {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
+                                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
+                                    hidden>{{this._id}}</span></button> --}}
+                                    <form action="/reviews/{{this.id}}/delete-review" method="POST">
+                <button type="sumbit"class="btn btn-sm btn-outline-dark delete-review-button"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
               </form>
-            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+
+
+            
           </div>
         </div>
         {{/each}}

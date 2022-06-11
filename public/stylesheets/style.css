@@ -2,6 +2,9 @@ body {
   padding: 0px;
   font: 16px "NotoSans", sans-serif;
 }
+.mt-10 {
+  margin-top: 4rem;
+}
 
 a {
   color: #00b7ff;
@@ -10,7 +13,7 @@ a {
 h1 {
   font-family: "Yeseva One", cursive;
   font-weight: 700;
-  padding-top: 4rem;
+  /* padding-top: 4rem; */
   padding-bottom: 4rem;
   text-align: center;
   /* font-size: 4rem; */
@@ -24,6 +27,11 @@ h2 {
 
 }
 
+.yeseva {
+  font-family: "Yeseva One", cursive;
+  font-weight: 700;
+}
+
 .recipe-image {
   width: 100%;
   height: auto;
@@ -33,6 +41,9 @@ h2 {
 .recipe-image-container {
   width: 50%;
   height: 400px;
+  margin: 0;
+    margin-top:0;
+    padding: 0;
 }
 
 .list-group {
@@ -76,8 +87,50 @@ h2 {
 
 .card-links {
   padding-left: 16px;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
 
+.single-recipe {
+  border: 1px solid bisque;
+  border-radius: 4px;
+  margin-top: 4rem;
+  padding: 0;
+}
+
+.recipe-header {
+  background-color: beige;
+  margin-bottom: 3rem;
+}
+
+.recipe-info {
+  padding-left: 4rem;
+  
+}
+
+.recipe-info h1{
+  text-align: left;
+}
+
+.ingredients-list {
+  border: 1px solid bisque;
+  padding: 1rem 1rem 0 1rem;
+
+}
+
+.list-group-flush {
+  padding-left: 0px;
+}
+
+.list-group-item {
+  border-bottom: 1px dotted bisque;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+ }
+
+ .ingredient-lines {
+   padding-left: 0;
+   padding-right: 0;
+ }

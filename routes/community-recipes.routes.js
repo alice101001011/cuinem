@@ -324,13 +324,13 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id)
       .populate("owner")
-      .populate("reviews"); //.populate("favorites");
+      .populate("reviews").populate("favorited");
 
-    //const favoritesCount = recipe.favorites.length
+    const favoritesCount = recipe.favorited.length
 
     console.log(recipe);
 
-    res.render("recipes/recipe-details-user", { recipe });
+    res.render("recipes/recipe-details-user", { recipe, favoritesCount });
   } catch (error) {
     next(error);
   }

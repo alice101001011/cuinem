@@ -5,8 +5,8 @@ window.onload = async () => {
   // console.log(response);
 
   const deleteRecipe = async () => {
-    const deleteRecipeButton = document.querySelectorAll(
-      ".delete-recipe-button"
+    const deleteReviewButton = document.querySelectorAll(
+      ".delete-review-button"
     );
     const container = document.querySelector(".card-grid");
 
