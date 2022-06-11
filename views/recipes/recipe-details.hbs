@@ -1,7 +1,3 @@
-{{!-- {{#if recipeData}} --}}
-
-
-
 <div class="container single-recipe">
   <div class="container recipe-header">
     <div class="row flex-lg-row align-items-center">
@@ -19,14 +15,6 @@
           <small>Dish type:</small>
           <h6>{{recipe.recipe.dishType}}</h6>
         </div>
-        {{!-- {{#if isLoggedIn}}
-        <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
-          <button class="btn btn-sm btn-outline-dark"><i class="bi-bookmark-heart-fill"
-              style="font-size: 1rem; color: red;"></i>
-            {{favoritesCount}}</button>
-        </form>
-
-        {{/if}} --}}
       </div>
     </div>
   </div>
@@ -51,8 +39,10 @@
           <a href="{{recipe.recipe.url}}" target="_blank" class="btn btn-sm btn-outline-dark">View full recipe on
             original site</a>
         </div>
-      {{!-- </div> --}}
-    {{!-- </div> --}}
+        {{!--
+      </div> --}}
+      {{!--
+    </div> --}}
 
 
 

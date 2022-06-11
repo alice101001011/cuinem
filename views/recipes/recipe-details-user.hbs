@@ -1,102 +1,84 @@
 <div class="container single-recipe">
-<div class="container recipe-header">
-  <div class="row flex-lg-row align-items-center ">
-    <div class="col-md-6 recipe-image-container home-header" style="background-image: url('{{recipe.recipe.imageUrl}}')" >
-      {{!-- <img src="{{recipe.recipe.imageUrl}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy"> --}}
-    </div>
-    <div class="col-md-6 recipe-info">
-      <h1 class="display-3 fw-bold lh-1 mb-3">{{recipe.recipe.label}}</h1>
-      <p class="lead">{{recipe.recipe.description}}</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-5">
-        <small>Cuisine:</small>
-        <h6>{{recipe.recipe.cuisineType}}</h6>
-        <small>Meal type:</small>
-        <h6>{{recipe.recipe.mealType}}</h6>
-        <small>Dish type:</small>
-        <h6>{{recipe.recipe.dishType}}</h6>
+  <div class="container recipe-header">
+    <div class="row flex-lg-row align-items-center ">
+      <div class="col-md-6 recipe-image-container home-header"
+        style="background-image: url('{{recipe.recipe.imageUrl}}')">
+        {{!-- <img src="{{recipe.recipe.imageUrl}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy">
+        --}}
       </div>
-      {{#if isLoggedIn}}
-      <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
-        <button class="btn btn-sm btn-outline-dark"><i class="bi-bookmark-heart-fill" style="font-size: 1rem; color: red;"></i>
-          {{favoritesCount}}</button>
-      </form>
-      
-      {{/if}}
+      <div class="col-md-6 recipe-info">
+        <h1 class="display-3 fw-bold lh-1 mb-3">{{recipe.recipe.label}}</h1>
+        <p class="lead">{{recipe.recipe.description}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-5">
+          <small>Cuisine:</small>
+          <h6>{{recipe.recipe.cuisineType}}</h6>
+          <small>Meal type:</small>
+          <h6>{{recipe.recipe.mealType}}</h6>
+          <small>Dish type:</small>
+          <h6>{{recipe.recipe.dishType}}</h6>
+        </div>
+        {{#if isLoggedIn}}
+        <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
+          <button class="btn btn-sm btn-outline-dark"><i class="bi-bookmark-heart-fill"
+              style="font-size: 1rem; color: red;"></i>
+            {{favoritesCount}}</button>
+        </form>
+
+        {{/if}}
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
+  <div class="container">
 
-  <div class="container ">
-    <div class="row justify-content-center gap-5">
-      <div class="col-6 col-sm-3 ingredients-list">
-        <h3 class="yeseva">Ingredients</h3>
-        <ul class="list-group-flush">
+    <div class="container ">
+      <div class="row justify-content-center gap-5">
+        <div class="col-6 col-sm-3 ingredients-list">
+          <h3 class="yeseva">Ingredients</h3>
+          <ul class="list-group-flush">
 
-          {{#each recipe.recipe.ingredients}}
-          <li class="list-group-item">{{this.quantity}} {{this.measure}} {{this.food}}</li>
+            {{#each recipe.recipe.ingredients}}
+            <li class="list-group-item">{{this.quantity}} {{this.measure}} {{this.food}}</li>
+
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col-6 col-sm-3">
+          <h3 class="yeseva">Instructions</h3>
+          <p>{{recipe.recipe.instructions}}</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <hr>
+        <h3>Reviews: </h3>
+
+        <ul class="list-group list-group-flush">
+          {{#each recipe.reviews}}
+          <li class="list-group-item">
+            <p>{{this.comment}}</p>
+            <p>{{this.user.username}}</p>
+
+          </li>
 
           {{/each}}
         </ul>
+
+        {{#if isLoggedIn}}
+
+        <a href="/reviews/{{recipe._id}}/review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
+        {{/if}}
+
+        <a href="/community-recipes" class="btn btn-sm btn-outline-secondary">Go back to recipes list</a>
+
       </div>
-      <div class="col-6 col-sm-3">
-        <h3 class="yeseva">Instructions</h3>
-        <p>{{recipe.recipe.instructions}}</p>
-      </div>
+
     </div>
   </div>
-
-
-
-
-  <div class="row justify-content-center">
-    <div class="col-md-9">
-
-
-
-
-
-
-      <hr>
-
-      <h3>Reviews: </h3>
-
-      <ul class="list-group list-group-flush">
-        {{#each recipe.reviews}}
-        <li class="list-group-item">
-          <p>{{this.comment}}</p>
-          <p>{{this.user.username}}</p>
-
-        </li>
-
-        {{/each}}
-      </ul>
-
-      {{#if isLoggedIn}}
-      {{!-- <div class="col-md-9"> --}}
-        {{!-- <form action="/community-recipes/{{_id}}" method="POST">
-
-          <div class="mb-3">
-            <label for="comment" class="form-label">Your review</label>
-            <input required type="text" class="form-control" id="comment" name="comment" />
-          </div>
-
-          <button type="submit" class="btn btn-sm btn-outline-dark">Create new
-            review</button>
-
-        </form> --}}
-        {{!-- <a href="/recipes/{{recipe.id}}" class="btn btn-sm btn-outline-dark">Go back</a> --}}
-        {{!-- </div> --}}
-      <a href="/reviews/{{recipe._id}}/review" type="button" class="btn btn-sm btn-outline-dark">Create review</a>
-      {{/if}}
-
-
-      <a href="/community-recipes" class="btn btn-sm btn-outline-secondary">Go back to recipes list</a>
-
-    </div>
-
-  </div>
-</div>
 </div>
 </div>

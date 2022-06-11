@@ -14,6 +14,10 @@ router.get("/:id/review", isLoggedIn, async (req, res, next) => {
     const recipe = await Recipe.findById(id)
       .populate("owner")
       .populate("reviews");
+
+    if (!recipe.owner) {
+      res.render(`reviews/create-review`, recipe);
+    }
     const ownerId = recipe.owner._id.valueOf();
 
     if (ownerId === currentUserId) {

@@ -18,10 +18,13 @@
           <label for="imageUpload" class="form-label">Change Profile Picture</label>
           <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
 
+          <label for="about" class="form-label">Edit About Text </label>
+          <textarea type="text" class="form-control-file" id="about" name="about" value="{{user.about}}"></textarea>
+
           <label for="username" class="form-label">Change Username</label>
           <input type="text" class="form-control-file" id="username" name="username" value="{{user.username}}"/>
 
-          <label for="password" class="form-label">Change Username</label>
+          <label for="password" class="form-label">Change Password</label>
           <input type="text" class="form-control-file" id="password" name="password" value="{{user.password}}"/>
           {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
           <button type="submit" class="btn btn-secondary" >Submit</button>

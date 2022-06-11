@@ -6,15 +6,9 @@ const Review = require("../models/Review.model");
 const Favorite = require("../models/Favorite.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const fileUploader = require("../config/cloudinary.config");
-const fetch = require("node-fetch");
-const axios = require("axios");
-const isOwner = require("../middleware/isOwner");
-
-// const url = require("url")
-// const urlData = url.parse(request.url, true)
-// const query = urlData.query
-
-//const { v4: uuidv4 } = require("uuid");
+// const fetch = require("node-fetch");
+// const axios = require("axios");
+// const isOwner = require("../middleware/isOwner");
 
 // Display user created recipes
 
@@ -46,24 +40,15 @@ router.get("/search", async (req, res, next) => {
 
     if (mealType != "") {
       query.$and.push({ "recipe.mealType": mealType });
-    } 
-    // else {
-    //   delete query.$and.mealType;
-    // }
+    }
 
     if (cuisineType != "") {
       query.$and.push({ "recipe.cuisineType": cuisineType });
-    } 
-    // else {
-    //   delete query.$and.cuisineType;
-    // }
+    }
 
     if (dishType != "") {
       query.$and.push({ "recipe.dishType": dishType });
-    } 
-    // else {
-    //   delete query.$and.dishType;
-    // }
+    }
 
     if (q != "") {
       query.$and.push({
@@ -72,10 +57,7 @@ router.get("/search", async (req, res, next) => {
           { "recipe.description": { $regex: q, $options: "i" } },
         ],
       });
-    } 
-    // else {
-    //   delete query.$and.q;
-    // }
+    }
 
     //console.log(query);
 
@@ -98,12 +80,17 @@ router.get("/create-recipe", isLoggedIn, (req, res, next) => {
   res.render("recipes/create-recipe", { pageTitle: "Create Recipe" });
 });
 
-const logger = (req, res, next) =>{
-  console.log(req.body)
-  next()
-} 
-router.post("/create-recipe",logger, fileUploader.single("imageUpload"), logger,async (req, res, next) => {
-    console.log(req.body)
+const logger = (req, res, next) => {
+  console.log(req.body);
+  next();
+};
+router.post(
+  "/create-recipe",
+  logger,
+  fileUploader.single("imageUpload"),
+  logger,
+  async (req, res, next) => {
+    console.log(req.body);
     try {
       const {
         label,
@@ -137,7 +124,7 @@ router.post("/create-recipe",logger, fileUploader.single("imageUpload"), logger,
         },
         owner: req.session.user._id,
       });
-console.log(req.body)
+      console.log(req.body);
       res.redirect("/profile/my-recipes");
     } catch (error) {
       next(error);
@@ -227,13 +214,6 @@ router.post("/:id/save-favorite", isLoggedIn, async (req, res, next) => {
   try {
     const recipeId = req.params.id;
     const currentUser = req.session.user._id;
-    // const user = await User.findById(currentUser); //populate("favorites")
-    // const recipe = await Recipe.findById(recipeId);
-
-    // const favoriteExists = await Favorite.exists({
-    //   recipeId: recipeId,
-    //   user: currentUser,
-    // });
 
     await User.findByIdAndUpdate(
       currentUser,
@@ -248,17 +228,6 @@ router.post("/:id/save-favorite", isLoggedIn, async (req, res, next) => {
     );
 
     res.redirect(`/community-recipes/${recipeId}`);
-    // if (!favoriteExists) {
-    //   const createdFavorite = await Favorite.create({
-    //     recipeId: recipeId,
-    //     user: currentUser,
-    //     label: recipe.recipe.label,
-    //   });
-
-    //   res.redirect(`/community-recipes/${recipeId}`);
-    // } else {
-    //   res.redirect("/community-recipes");
-    // }
   } catch (error) {
     next(error);
     res.render("recipes");
@@ -324,9 +293,10 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id)
       .populate("owner")
-      .populate("reviews").populate("favorited");
+      .populate("reviews")
+      .populate("favorited");
 
-    const favoritesCount = recipe.favorited.length
+    const favoritesCount = recipe.favorited.length;
 
     console.log(recipe);
 

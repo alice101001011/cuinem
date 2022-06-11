@@ -7,132 +7,21 @@
 
     <div class="profile-container">
 
-      {{!-- <h2>Edit profile</h2> --}}
-
-      <img src="{{user.profilePic}}" alt="{{user.username}} image">
-
-              {{!-- <form action="/profile" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                  <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
-                  {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  {{!-- <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
-                </div>
-              </form> --}}
-<div><p>About me</p>
-<p>{{user.about}}</p></div>
-
-<a href="/profile/edit-profile" class="btn btn-sm btn-outline-dark">Edit your profile</a>
-
-
-
-
-
-
-      {{!-- USERNAME EDITING --}}
-      <!-- Button trigger modal -->
-      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
-        Edit your user name
-      </button> --}}
-
-      <!-- Modal -->
-      {{!-- <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit your user name</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="/profile/edit/username-update" method="POST">
-                <div class="mb-3">
-                  <input required type="text" class="form-control" id="username" name="username" value="{{username}}"
-                    placeholder="Enter your new user name">
-                    <button type="submit" class="btn btn-dark">Submit</button>
-                </div>
-              </form>      
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-4">
+        <img src="{{user.profilePic}}" alt="{{user.username}} image"></div>
+<div class="col-6 mt-5">
+        <div>
+          <h2>About me</h2>
+          <p>{{user.username}}</p>
+          <p>{{user.about}}</p>
         </div>
-      </div> --}}
-      {{!-- USERNAME EDITING --}}
+
+        <a href="/profile/edit-profile" class="btn btn-md btn-outline-dark">Edit your profile</a>
+</div>
+      </div>
 
 
-
-      {{!-- PWD EDITING --}}
-      <!-- Button trigger modal -->
-      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
-        Edit your password
-      </button> --}}
-
-      <!-- Modal -->
-      {{!-- <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit your password</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="/profile/edit/pwd-update" method="POST">
-                <div class="mb-3">
-                  <input required type="password" class="form-control" id="password" name="password" value="{{password}}"
-                    placeholder="Enter your new password">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
-                </div>
-              </form>
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>    
-            </div>
-          </div>
-        </div>
-      </div> --}}
-      {{!-- PWD EDITING --}}
-
-
-
-      {{!-- PIC EDITING --}}
-      <!-- Button trigger modal -->
-      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
-        Change your profile picture
-      </button> --}}
-
-      <!-- Modal -->
-      {{!-- <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Change your profile picture</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-
-
-              <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
-                <div class="mb-3">
-                  <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
-                  {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  {{!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
-                </div>
-              </form> --}}
-
-
-
-
-            {{!-- </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div> --}}
 
     </div> {{!-- class"profile-container" --}}
 
@@ -149,22 +38,7 @@
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-cookbook">Go to my Cookbook</a>
               </h2>
               <ul class="d-flex list-unstyled mt-auto">
-                {{!-- <li class="me-auto">
-                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                    class="rounded-circle border border-white">
-                </li> --}}
-                {{!-- <li class="d-flex align-items-center me-3">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#geo-fill"></use>
-                  </svg>
-                  <small>Earth</small>
-                </li>
-                <li class="d-flex align-items-center">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#calendar3"></use>
-                  </svg>
-                  <small>3d</small>
-                </li> --}}
+              
               </ul>
             </div>
           </div>
@@ -175,24 +49,7 @@
             style="background-image: url('unsplash-photo-2.jpg');">
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-recipes">Go to my Recipes</a></h2>
-              {{!-- <ul class="d-flex list-unstyled mt-auto">
-                <li class="me-auto">
-                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                    class="rounded-circle border border-white">
-                </li>
-                <li class="d-flex align-items-center me-3">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#geo-fill"></use>
-                  </svg>
-                  <small>Pakistan</small>
-                </li>
-                <li class="d-flex align-items-center">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#calendar3"></use>
-                  </svg>
-                  <small>4d</small>
-                </li>
-              </ul> --}}
+   
             </div>
           </div>
         </div>
@@ -203,24 +60,7 @@
             <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
               <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/community-recipes/create-recipe">Create a new
                   Recipe</a></h2>
-              {{!-- <ul class="d-flex list-unstyled mt-auto">
-                <li class="me-auto">
-                  <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                    class="rounded-circle border border-white">
-                </li>
-                <li class="d-flex align-items-center me-3">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#geo-fill"></use>
-                  </svg>
-                  <small>California</small>
-                </li>
-                <li class="d-flex align-items-center">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#calendar3"></use>
-                  </svg>
-                  <small>5d</small>
-                </li>
-              </ul> --}}
+      
             </div>
           </div>
         </div>
@@ -244,28 +84,27 @@
             <p class="card-text"> {{this.comment}}</p>
           </div>
           <div class="card-links">
-<div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="/community-recipes/{{this.recipeId}}" type="button"
-                                class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
-                                    style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
-                            <a href="/reviews/{{this.id}}/edit-review" type="button"
-                                class="btn btn-sm btn-outline-secondary"><i class="bi-pencil-fill"
-                                    style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
-                            {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
-                                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
-                                    hidden>{{this._id}}</span></button> --}}
-                                    <form action="/reviews/{{this.id}}/delete-review" method="POST">
-                <button type="sumbit"class="btn btn-sm btn-outline-dark delete-review-button"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
-              </form>
-                        </div>
-                        <div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-secondary"><i
+                    class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-secondary"><i
+                    class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
+                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
+                    hidden>{{this._id}}</span></button> --}}
+                <form action="/reviews/{{this.id}}/delete-review" method="POST">
+                  <button type="sumbit" class="btn btn-sm btn-outline-dark delete-review-button"><i
+                      class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
+                </form>
+              </div>
+              <div>
 
-                        </div>
-                    </div>
+              </div>
+            </div>
 
 
-            
+
           </div>
         </div>
         {{/each}}
@@ -277,9 +116,8 @@
 {{!-- axios required script --}}
 <script src="/js/login-signup-pops.js"></script>
 <script>const urlParams = new URLSearchParams(window.location.search);
-  const msg = urlParams.get('msg') 
-  if(msg!=null){
+  const msg = urlParams.get('msg')
+  if (msg != null) {
     alert(msg);
-    }
-    </script>
-    
+  }
+</script>

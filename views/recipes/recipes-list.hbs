@@ -47,38 +47,10 @@
           <a href="/recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View Recipe
             Details</a>
 
-
-          {{!-- view recipe url on another tab --}}
-          {{!-- <a href="{{this.recipe.url}}" target="_blank" type="button"
-            class="btn btn-sm btn-outline-dark recipe-id">View recipe site</a> --}}
-          {{!-- view recipe url on another tab --}}
-
         </div>
       </div>
       {{/each}}
     </div>
-    {{!-- {{else}} --}}
-
-    {{!-- <div class="card-grid">
-      {{#each communityRecipeData}}
-      <div class="card">
-        {{#if this.recipe.imageUrl}}
-        <img src={{this.recipe.imageUrl}} class="card-img-top" alt={{this.recipe.label}} />
-        {{/if}}
-        <div class="card-body">
-          <h5 class="card-title">{{this.recipe.label}}</h5>
-
-          <a href="/community-recipes/{{this._id}}" type="button" class="btn btn-sm btn-outline-dark recipe-id">View
-            Recipe Details</a>
-
-        </div>
-      </div>
-      {{/each}}
-    </div>
-
-
-    {{/if}} --}}
-
 
     <a href="{{newRecipeData._links.next.href}}" type="button" class="btn btn-sm btn-outline-dark">Next page</a>
   </div>
