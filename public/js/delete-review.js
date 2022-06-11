@@ -17,12 +17,12 @@ window.onload = async () => {
 
         // Remove favorite
         await axios.post(
-          `http://localhost:3000/community-recipes/${id}/delete`
+          `https://cuinem.herokuapp.com/community-recipes/${id}/delete`
         );
 
         //Getting the activity data
         const response = await axios.get(
-          "http://localhost:3000/profile/my-recipes/json-list"
+          "https://cuinem.herokuapp.com/profile/my-recipes/json-list"
         );
         console.log(response);
 

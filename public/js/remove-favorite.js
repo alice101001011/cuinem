@@ -1,6 +1,6 @@
 window.onload = async () => {
     const response = await axios.get(
-        "http://localhost:3000/profile/my-cookbook/json-list"
+        "https://cuinem.herokuapp.com/profile/my-cookbook/json-list"
     );
     console.log(response);
 
@@ -17,12 +17,12 @@ window.onload = async () => {
 
                 // Remove favorite
                 await axios.post(
-                    `http://localhost:3000/community-recipes/${id}/remove-favorite`
+                    `https://cuinem.herokuapp.com/community-recipes/${id}/remove-favorite`
                 );
 
                 //Getting the activity data
                 const response = await axios.get(
-                    "http://localhost:3000/profile/my-cookbook/json-list"
+                    "https://cuinem.herokuapp.com/profile/my-cookbook/json-list"
                 );
                 console.log(response);
 
