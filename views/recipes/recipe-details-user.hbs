@@ -1,8 +1,8 @@
 <div class="container single-recipe">
 <div class="container recipe-header">
-  <div class="row flex-lg-row align-items-center">
-    <div class="col-md-6 overflow-hidden recipe-image-container">
-      <img src="{{recipe.recipe.imageUrl}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy">
+  <div class="row flex-lg-row align-items-center ">
+    <div class="col-md-6 recipe-image-container home-header" style="background-image: url('{{recipe.recipe.imageUrl}}')" >
+      {{!-- <img src="{{recipe.recipe.imageUrl}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy"> --}}
     </div>
     <div class="col-md-6 recipe-info">
       <h1 class="display-3 fw-bold lh-1 mb-3">{{recipe.recipe.label}}</h1>
