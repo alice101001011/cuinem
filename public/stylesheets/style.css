@@ -31,6 +31,15 @@ h2 {
   font-weight: 700;
 }
 
+
+.home-header {
+height: 50vh;
+background-image: url("../images/header-image-home.webp");
+background-position: center;
+background-size: cover;
+
+
+}
 .recipe-image {
   width: 100%;
   height: auto;

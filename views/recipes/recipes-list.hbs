@@ -1,15 +1,15 @@
-<div class="bg-dark text-secondary px-4 py-5 text-center">
+<div class="bg-dark px-4 py-5 text-center home-header">
   <div class="py-5">
-    <h1 class="display-3 fw-bold text-white">Search recipes from the web</h1>
+    <h1 class="display-3 fw-bold ">Search recipes from the web</h1>
     <div class="col-lg-6 mx-auto">
-      {{!-- <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
-        web, upload your own and create your own "cookbook" with your favorite recipes.</p> --}}
+      <p class="fs-5 mb-4">Welcome to the new recipes platform! Here you can search for recipes from all over the
+        web, upload your own and create your own "cookbook" with your favorite recipes.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center ">
 
         <form action="/recipes/search" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 input-group"
           role="search">
 
-          <input type="text" name="q" class="form-control form-control-dark text-white bg-dark"
+          <input type="text" name="q" class="form-control form-control form-control-dark text-white bg-dark"
             placeholder="Search..." />
 
           {{!-- <div class="form-check form-check-inline">
@@ -25,7 +25,7 @@
             <label class="form-check-label" for="mealType">Dinner</label>
           </div> --}}
 
-          <button type="submit" class="btn btn-outline-light btn-md px-4 button-addon2">SEARCH</button>
+          <button type="submit" class="btn btn-outline-dark btn-md px-4 button-addon2">SEARCH</button>
         </form>
 
       </div>
