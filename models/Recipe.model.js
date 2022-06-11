@@ -26,7 +26,7 @@ const recipeSchema = new Schema({
     cuisineType: {
       type: String,
       enum: [
-        undefined,
+        "",
         'American',
         "Asian",
         "British",
@@ -46,7 +46,7 @@ const recipeSchema = new Schema({
         "South American",
         "South East Asian",
       ],
-      default: undefined,
+      default: "",
     },
     mealType: {
       type: String,
@@ -80,7 +80,6 @@ const recipeSchema = new Schema({
   },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-  //favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
   favorited: [{ type: Schema.Types.ObjectId, ref: "User" }],
   recipeId: String,
   created: {

@@ -20,7 +20,7 @@ const isOwner = require("../middleware/isOwner");
 
 router.get("/", async (req, res, next) => {
   try {
-    const communityRecipeData = await Recipe.find();
+    const communityRecipeData = await Recipe.find().sort({ created: -1 });
     console.log(communityRecipeData);
     res.render("recipes/recipes-list-users", {
       communityRecipeData,
@@ -31,80 +31,58 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// router.get("/", async (req, res, next) => {
-//   try {
-//     const communityRecipeData = await Recipe.find();
-//     console.log(communityRecipeData);
-//     res.render("recipes/recipes-list-users", {
-//       communityRecipeData,
-//       pageTitle: "Community Recipes",
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 // Display search results for user recipes
 
 router.get("/search", async (req, res, next) => {
   try {
-    
-    console.log(req.query);
-    console.log(req.body);
-    
-    //     console.log(req.query);
-    const limit = 20;
-    const page = 1;
-    let searchTerm = req.query.q;
-    // const meal = req.query.mealType;
-    // const cuisine = req.query.cuisineType;
-    // const dish = req.query.dishType;
+    // const limit = 20;
+    // const page = 1;
 
-const {q, mealType, cuisineType, dishType} = req.query
-let query = {}
+    const { mealType, cuisineType, dishType, q } = req.query;
 
-    if (q != "") {
-      query.q = q
-    } else { delete query.q}
+    let query = {
+      $and: [],
+    };
 
     if (mealType != "") {
-      query.mealType = mealType
-    } else { delete query.mealType}
+      query.$and.push({ "recipe.mealType": mealType });
+    } 
+    // else {
+    //   delete query.$and.mealType;
+    // }
 
     if (cuisineType != "") {
-      query.cuisineType = cuisineType
-    } else { delete query.cuisineType}
+      query.$and.push({ "recipe.cuisineType": cuisineType });
+    } 
+    // else {
+    //   delete query.$and.cuisineType;
+    // }
 
     if (dishType != "") {
-      query.dishType = dishType
-    } else { delete query.dishType}
+      query.$and.push({ "recipe.dishType": dishType });
+    } 
+    // else {
+    //   delete query.$and.dishType;
+    // }
 
-console.log(query)
+    if (q != "") {
+      query.$and.push({
+        $or: [
+          { "recipe.label": { $regex: q, $options: "i" } },
+          { "recipe.description": { $regex: q, $options: "i" } },
+        ],
+      });
+    } 
+    // else {
+    //   delete query.$and.q;
+    // }
 
+    //console.log(query);
 
-const filters = {$and : [{label:{$regex: query.q}}, {$or: [
-  {"recipe.cuisineType": { $eq: query.cuisineType}},
-        {"recipe.mealType": { $eq: query.mealType }},
-        {"recipe.dishType": { $eq: query.dishType }}]}]
-}
+    let recipes = await Recipe.find(query);
 
-let recipes = await Recipe.find(filters)
-
-    // let recipes = await Recipe.find(
-    //   {
-    //     "recipe.cuisineType": { $eq: cuisine},
-    //     "recipe.mealType": { $eq: meal },
-    //     "recipe.dishType": { $eq: dish },
-    //   }
-
-    //   //label:{$regex: searchQuery}
-    //   // $text: { $search: query },
-    // );
-
-  
-    //res.json(recipes)
-    //console.log(recipes)
     //console.log(recipes);
+
     res.render("recipes/search-results-users", {
       pageTitle: "Search Results",
       recipes,
@@ -120,12 +98,13 @@ router.get("/create-recipe", isLoggedIn, (req, res, next) => {
   res.render("recipes/create-recipe", { pageTitle: "Create Recipe" });
 });
 
-router.post(
-  "/create-recipe",
-  fileUploader.single("imageUpload"),
-  async (req, res, next) => {
+const logger = (req, res, next) =>{
+  console.log(req.body)
+  next()
+} 
+router.post("/create-recipe",logger, fileUploader.single("imageUpload"), logger,async (req, res, next) => {
+    console.log(req.body)
     try {
-      //console.log(req.body);
       const {
         label,
         description,
@@ -158,7 +137,7 @@ router.post(
         },
         owner: req.session.user._id,
       });
-
+console.log(req.body)
       res.redirect("/profile/my-recipes");
     } catch (error) {
       next(error);
@@ -345,13 +324,13 @@ router.get("/:id", async (req, res, next) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id)
       .populate("owner")
-      .populate("reviews"); //.populate("favorites");
+      .populate("reviews").populate("favorited");
 
-    //const favoritesCount = recipe.favorites.length
+    const favoritesCount = recipe.favorited.length
 
     console.log(recipe);
 
-    res.render("recipes/recipe-details-user", { recipe });
+    res.render("recipes/recipe-details-user", { recipe, favoritesCount });
   } catch (error) {
     next(error);
   }

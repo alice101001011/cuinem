@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-10">
 
   <h1>Welcome back, {{user.username}}! This is your user profile</h2>
 
@@ -7,23 +7,22 @@
 
     <div class="profile-container">
 
-      <h2>Edit profile</h2>
+      {{!-- <h2>Edit profile</h2> --}}
 
       <img src="{{user.profilePic}}" alt="{{user.username}} image">
 
-      <p>Intro about me</p>
-
-              <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
+              {{!-- <form action="/profile" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
                   {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                  {{!-- <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
-              </form>
+              </form> --}}
+<div><p>About me</p>
+<p>{{user.about}}</p></div>
 
-
-
+<a href="/profile/edit-profile" class="btn btn-sm btn-outline-dark">Edit your profile</a>
 
 
 
@@ -32,12 +31,12 @@
 
       {{!-- USERNAME EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-username">
         Edit your user name
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-username" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -58,19 +57,19 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       {{!-- USERNAME EDITING --}}
 
 
 
       {{!-- PWD EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pwd">
         Edit your password
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-pwd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -92,19 +91,19 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       {{!-- PWD EDITING --}}
 
 
 
       {{!-- PIC EDITING --}}
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
+      {{!-- <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#edit-pic">
         Change your profile picture
-      </button>
+      </button> --}}
 
       <!-- Modal -->
-      <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {{!-- <div class="modal fade" id="edit-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -118,22 +117,22 @@
               <form action="/profile/edit/pic-update" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="imageUpload" class="form-label">Image Upload</label>
-                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" />
+                  <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" /> --}}
                   {{!-- <input type="text" name="existingImage" hidden value="{{user.profilePic}}" /> --}}
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                  {{!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
                 </div>
-              </form>
+              </form> --}}
 
 
 
 
-            </div>
+            {{!-- </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
 
     </div> {{!-- class"profile-container" --}}
 
@@ -245,22 +244,28 @@
             <p class="card-text"> {{this.comment}}</p>
           </div>
           <div class="card-links">
-
-
-
-            <div>
-              <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View
-                recipe</a>
-            </div>
-            <div>
-              <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-dark"><i class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit
-                review</a>
-            </div>
-            <div>
-              <form action="/reviews/{{this.id}}/delete-review" method="POST">
-                <button class="btn btn-sm btn-outline-dark"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
+<div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/community-recipes/{{this.recipeId}}" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                            <a href="/reviews/{{this.id}}/edit-review" type="button"
+                                class="btn btn-sm btn-outline-secondary"><i class="bi-pencil-fill"
+                                    style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                            {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
+                                    class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
+                                    hidden>{{this._id}}</span></button> --}}
+                                    <form action="/reviews/{{this.id}}/delete-review" method="POST">
+                <button type="sumbit"class="btn btn-sm btn-outline-dark delete-review-button"><i class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
               </form>
-            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+
+
+            
           </div>
         </div>
         {{/each}}
