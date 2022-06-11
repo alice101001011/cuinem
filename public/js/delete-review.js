@@ -46,10 +46,10 @@ window.onload = async () => {
             <div class="btn-group">
                 <a href="/community-recipes/${recipe._id}}" type="button"
                     class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
-                        style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                        style="font-size: 1rem; color: rgb(86, 129, 81);"></i> View</a>
                 <a href="/community-recipes/${recipe._id}}/edit" type="button"
                     class="btn btn-sm btn-outline-secondary"><i class="bi-pencil-fill"
-                        style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                        style="font-size: 1rem; color: rgb(86, 129, 81);"></i> Edit</a>
                 <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
                         class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
                         hidden>${recipe._id}</span></button>

@@ -31,9 +31,9 @@
 
   <div class="container">
 
-    <div class="container ">
-      <div class="row justify-content-center gap-5">
-        <div class="col-6 col-sm-3 ingredients-list">
+    {{!-- <div class="container "> --}}
+      <div class="row flex-lg-row justify-content-center gap-5">
+        <div class="col-4 col-sm-4  ingredients-list">
           <h3 class="yeseva">Ingredients</h3>
           <ul class="list-group-flush">
 
@@ -43,12 +43,12 @@
             {{/each}}
           </ul>
         </div>
-        <div class="col-6 col-sm-3">
+        <div class="col-6 col-sm-6">
           <h3 class="yeseva">Instructions</h3>
           <p>{{recipe.recipe.instructions}}</p>
         </div>
       </div>
-    </div>
+    {{!-- </div> --}}
 
 
 

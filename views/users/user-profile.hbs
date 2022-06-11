@@ -32,10 +32,10 @@
 
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg "
             style="background-image: url('unsplash-photo-1.jpg');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-cookbook">Go to my Cookbook</a>
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 profile-links-1">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-cookbook" class="profile-links">Go to my Cookbook</a>
               </h2>
               <ul class="d-flex list-unstyled mt-auto">
               
@@ -45,20 +45,20 @@
         </div>
 
         <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg "
             style="background-image: url('unsplash-photo-2.jpg');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-recipes">Go to my Recipes</a></h2>
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 profile-links-2">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/profile/my-recipes" class="profile-links">Go to my Recipes</a></h2>
    
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg"
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-4 shadow-lg "
             style="background-image: url('unsplash-photo-3.jpg');">
-            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/community-recipes/create-recipe">Create a new
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1 profile-links-3">
+              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><a href="/community-recipes/create-recipe" class="profile-links">Create a new
                   Recipe</a></h2>
       
             </div>
@@ -87,15 +87,15 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="/community-recipes/{{this.recipeId}}" type="button" class="btn btn-sm btn-outline-secondary"><i
-                    class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                    class="bi-eye-fill" style="font-size: 1rem; color: rgb(86, 129, 81);"></i> View</a>
                 <a href="/reviews/{{this.id}}/edit-review" type="button" class="btn btn-sm btn-outline-secondary"><i
-                    class="bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Edit</a>
+                    class="bi-pencil-fill" style="font-size: 1rem; color: rgb(86, 129, 81);"></i> Edit</a>
                 {{!-- <button type="submit" class="btn btn-sm btn-outline-dark delete-recipe-button"><i
                     class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Delete<span
                     hidden>{{this._id}}</span></button> --}}
                 <form action="/reviews/{{this.id}}/delete-review" method="POST">
                   <button type="sumbit" class="btn btn-sm btn-outline-dark delete-review-button"><i
-                      class="bi-trash-fill" style="font-size: 1rem; color: cornflowerblue;"></i> Delete</button>
+                      class="bi-trash-fill" style="font-size: 1rem; color: rgb(180, 85, 72);"></i> Delete</button>
                 </form>
               </div>
               <div>

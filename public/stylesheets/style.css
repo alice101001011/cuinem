@@ -10,10 +10,14 @@ a {
   color: #00b7ff;
 }
 
+p {
+  line-height: 1.5rem;
+}
+
 h1 {
   font-family: "Yeseva One", cursive;
   font-weight: 700;
-  /* padding-top: 4rem; */
+  padding-top: 1rem;
   padding-bottom: 2rem;
   text-align: center;
   /* font-size: 4rem; */
@@ -24,6 +28,31 @@ h2 {
   font-weight: 600;
   padding-bottom: 3rem;
 
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.profile-links {
+  color: beige
+}
+
+ a:hover {
+  color: bisque
+}
+
+.profile-links-1 {
+  background-color:rgb(84, 114, 92)
+}
+
+.profile-links-2 {
+  background-color:rgb(150, 94, 56)
+}
+
+.profile-links-3 {
+  background-color:rgb(118, 143, 72)
 }
 
 .yeseva {
@@ -48,7 +77,7 @@ background-size: cover;
 
 .recipe-image-container {
   width: 50%;
-  height: 400px;
+  /* height: 400px; */
   margin: 0;
     margin-top:0;
     padding: 0;

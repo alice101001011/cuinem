@@ -46,10 +46,10 @@ window.onload = async () => {
                       <div class="btn-group">
                           <a href="/community-recipes/${favorite._id}}" type="button"
                               class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
-                                  style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+                                  style="font-size: 1rem; color: rgb(86, 129, 81);"></i> View</a>
 
                           <button type="submit" class="btn btn-sm btn-outline-dark remove-favorite-button"><i
-                                  class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove<span
+                                  class="bi-trash-fill" style="font-size: 1rem; color: rgb(180, 85, 72);"></i> Remove<span
                                   hidden>${favorite._id}}</span></button>
                       </div>
                       <div>
