@@ -1,4 +1,4 @@
-const recipesIntro = [
+const recipes = [
     {
       recipe: {
         label: "Italian Cheese Bombs", //this is recipe name
@@ -731,4 +731,4 @@ const recipesIntro = [
       },
     ]
     
-    module.exports = recipesIntro;
+    module.exports = recipes;
