@@ -1,35 +1,69 @@
 {{!-- {{#if recipeData}} --}}
-<h1 class="display-3 fw-bold"> {{recipe.recipe.label}}</h1>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-9">
-      <h3>Cuisine type:</h3>
-      <p>{{recipe.recipe.cuisineType}}</p>
-      <h3>Meal type:</h3>
-      <p>{{recipe.recipe.mealType}}</p>
-      <h3>Dish type:</h3>
-      <p>{{recipe.recipe.dishType}}</p>
-      <h3>Description: </h3>
-      <p>{{recipe.recipe.description}}</p>
-      <h3>Ingredients: </h3>
-      <ul>
-        {{#each recipe.recipe.ingredients}}
-        <li>{{this.text}}</li>
-        {{/each}}
-      </ul>
-      <img src="{{recipe.recipe.image}}" alt="" />
-      <p>Source: <a href="{{recipe.recipe.url}}" target="_blank">View full recipe on original site</a></p>
 
-      {{!-- <form action="/recipes/{{recipe.recipeId}}/save-favorite" method="POST">
-        <button class="btn btn-sm btn-outline-dark">Save recipe to favorites</button>
-      </form> --}}
-      <hr>
 
-      <a href="/recipes" class="btn btn-sm btn-outline-dark">Go back to recipes list</a>
+<div class="container single-recipe">
+  <div class="container recipe-header">
+    <div class="row flex-lg-row align-items-center">
+      <div class="col-md-6 overflow-hidden recipe-image-container">
+        <img src="{{recipe.recipe.image}}" class="recipe-image" alt="{{recipe.recipe.label}}" loading="lazy">
+      </div>
+      <div class="col-md-6 recipe-info">
+        <h1 class="display-3 fw-bold lh-1 mb-3">{{recipe.recipe.label}}</h1>
+        <p class="lead">{{recipe.recipe.description}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <small>Cuisine:</small>
+          <h6>{{recipe.recipe.cuisineType}}</h6>
+          <small>Meal type:</small>
+          <h6>{{recipe.recipe.mealType}}</h6>
+          <small>Dish type:</small>
+          <h6>{{recipe.recipe.dishType}}</h6>
+        </div>
+        {{!-- {{#if isLoggedIn}}
+        <form action="/community-recipes/{{recipe._id}}/save-favorite" method="POST">
+          <button class="btn btn-sm btn-outline-dark"><i class="bi-bookmark-heart-fill"
+              style="font-size: 1rem; color: red;"></i>
+            {{favoritesCount}}</button>
+        </form>
+
+        {{/if}} --}}
+      </div>
+    </div>
+  </div>
+
+  {{!-- <div class="container"> --}}
+
+    {{!-- <div class="container "> --}}
+      <div class="row justify-content-center gap-5">
+        <div class="col-6 col-sm-3 ingredients-list">
+          <h3 class="yeseva">Ingredients</h3>
+          <ul class="list-group-flush">
+
+            {{#each recipe.recipe.ingredients}}
+            <li class="list-group-item">{{this.text}}</li>
+
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col-6 col-sm-3">
+          <h3 class="yeseva">Instructions</h3>
+          <h5>To read instructions, please visit the recipe on its original website</h5>
+          <a href="{{recipe.recipe.url}}" target="_blank" class="btn btn-sm btn-outline-dark">View full recipe on
+            original site</a>
+        </div>
+      {{!-- </div> --}}
+    {{!-- </div> --}}
+
+
+
+
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <a href="/recipes" class="btn btn-sm btn-outline-secondary">Go back to recipes list</a>
+
+      </div>
 
     </div>
-
   </div>
 </div>
 </div>

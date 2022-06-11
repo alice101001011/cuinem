@@ -1,4 +1,4 @@
-<h1>Create Recipe</h1>
+<h1 class="mt-10">Create Recipe</h1>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-9">
@@ -27,16 +27,16 @@
 
 
         <div class="mb-3" id="allIngredients">
-          <label for="ingredients" class="form-label">Add Ingredients</label>
+          <label for="ingredients" class="form-label h5">Add Ingredients</label>
           <div class="row">
             <div class="col-2">
-              <p>Quantity</p>
+              <small>Quantity</small>
             </div>
             <div class="col-2">
-              <p>Measure</p>
+              <small>Measure</small>
             </div>
             <div class="col-8">
-              <p>Food (Description)</p>
+              <small>Food (Description)</psmall>
             </div>
           </div>
           <div class="ingredient-lines container">
@@ -57,9 +57,9 @@
               style="font-size: 1rem; color: cornflowerblue;"></i> Add
             ingredient</button></div>
 
+<div class="row">
 
-
-        <div class="input-group input-group-sm mb-3">
+        <div class="input-group input-group-sm mb-3 col">
           <label class="input-group-text" for="cuisineType">Cuisine type:</label>
 
           <select class="form-select form-control" name="cuisineType" id="cuisineType">
@@ -85,7 +85,7 @@
           </select>
         </div>
 
-        <div class="input-group input-group-sm mb-3">
+        <div class="input-group input-group-sm mb-3 col">
           <label class="input-group-text" for="dishType">Dish type:</label>
 
           <select class="form-select form-control" name="dishType" id="dishType">
@@ -111,7 +111,7 @@
           </select>
         </div>
 
-        <div class="input-group input-group-sm mb-3">
+        <div class="input-group input-group-sm mb-3 col">
           <label class="input-group-text" for="mealType">Meal type:</label>
 
           <select class="form-select form-control" name="mealType" id="mealType">
@@ -122,6 +122,8 @@
             <option value="Snack">Snack</option>
             <option value="Teatime">Teatime</option>
           </select>
+        </div>
+
         </div>
 
         <div class="mb-3">

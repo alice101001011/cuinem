@@ -1,37 +1,37 @@
 window.onload = async () => {
-  const response = await axios.get(
-    "http://localhost:3000/profile/my-cookbook/json-list"
-  );
-  console.log(response);
-
-  const removeFavorites = async () => {
-    const removeFavoriteButton = document.querySelectorAll(
-      ".remove-favorite-button"
+    const response = await axios.get(
+        "http://localhost:3000/profile/my-cookbook/json-list"
     );
-    const container = document.querySelector(".card-grid");
+    console.log(response);
 
-    removeFavoriteButton.forEach((button) => {
-      button.addEventListener("click", async (event) => {
-        // Getting the id of the recipe
-        const id = event.currentTarget.children[1].innerHTML;
-
-        // Remove favorite
-        await axios.post(
-          `http://localhost:3000/community-recipes/${id}/remove-favorite`
+    const removeFavorites = async () => {
+        const removeFavoriteButton = document.querySelectorAll(
+            ".remove-favorite-button"
         );
+        const container = document.querySelector(".card-grid");
 
-        //Getting the activity data
-        const response = await axios.get(
-          "http://localhost:3000/profile/my-cookbook/json-list"
-        );
-        console.log(response);
+        removeFavoriteButton.forEach((button) => {
+            button.addEventListener("click", async (event) => {
+                // Getting the id of the recipe
+                const id = event.currentTarget.children[1].innerHTML;
 
-        //Deleting DOM content
-        container.innerHTML = "";
+                // Remove favorite
+                await axios.post(
+                    `http://localhost:3000/community-recipes/${id}/remove-favorite`
+                );
 
-        //Re-painting DOM content
-        response.data.forEach((favorite) => {
-          container.innerHTML += `  
+                //Getting the activity data
+                const response = await axios.get(
+                    "http://localhost:3000/profile/my-cookbook/json-list"
+                );
+                console.log(response);
+
+                //Deleting DOM content
+                container.innerHTML = "";
+
+                //Re-painting DOM content
+                response.data.forEach((favorite) => {
+                    container.innerHTML += `  
      
                   <div class="card">
                     
@@ -42,25 +42,31 @@ window.onload = async () => {
                           <p class="card-text"> ${favorite.recipe.description}</p>
                       </div>
                       <div class="card-links">
-                          <div>
-                              <a href="/community-recipes/${favorite._id}}" type="button"
-                                  class="btn btn-sm btn-outline-dark"><i class="bi-eye-fill" style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
-                          </div>
-      
-                          <div>
-                              
-                                  <button type="submit" class="btn btn-sm btn-outline-dark remove-favorite-button"><i class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove<span hidden>${favorite._id}</span></button>
-                              
-                          </div>
+                      <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                          <a href="/community-recipes/${favorite._id}}" type="button"
+                              class="btn btn-sm btn-outline-secondary"><i class="bi-eye-fill"
+                                  style="font-size: 1rem; color: cornflowerblue;"></i> View</a>
+
+                          <button type="submit" class="btn btn-sm btn-outline-dark remove-favorite-button"><i
+                                  class="bi-trash-fill" style="font-size: 1rem; color: red;"></i> Remove<span
+                                  hidden>${favorite._id}}</span></button>
+                      </div>
+                      <div>
+
+                      </div>
+                    
+                  </div>
+
                       </div>
                   </div>
 `;
 
+                });
+                removeFavorites();
+            });
         });
-        removeFavorites();
-      });
-    });
-  };
+    };
 
-  removeFavorites();
+    removeFavorites();
 };
